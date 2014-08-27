@@ -7,6 +7,7 @@
 //
 
 #import "MWDetailViewController.h"
+#import "MWDateChangeViewController.h"
 #import "MWItem.h"
 
 @interface MWDetailViewController ()
@@ -84,6 +85,14 @@
     item.name = self.nameField.text;
     item.serialNumber = self.serialField.text;
     item.valueInDollars = [self.valueField.text floatValue];
+}
+
+-(IBAction)showDateChanger:(id)sender {
+    MWDateChangeViewController *dateChangeController = [[MWDateChangeViewController alloc] init];
+    
+    dateChangeController.item = self.item;
+    
+    [self.navigationController pushViewController:dateChangeController animated:YES];
 }
 
 @end
