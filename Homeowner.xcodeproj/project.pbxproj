@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AFBD523019ACE5BE001E6290 /* MWDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBD522E19ACE5BE001E6290 /* MWDetailViewController.m */; };
+		AFBD523119ACE5BE001E6290 /* MWDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBD522F19ACE5BE001E6290 /* MWDetailViewController.xib */; };
 		AFF99F2019A9F7940065EAA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF99F1F19A9F7940065EAA0 /* Foundation.framework */; };
 		AFF99F2219A9F7940065EAA0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF99F2119A9F7940065EAA0 /* CoreGraphics.framework */; };
 		AFF99F2419A9F7940065EAA0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF99F2319A9F7940065EAA0 /* UIKit.framework */; };
@@ -19,6 +21,9 @@
 		AFF99F3B19A9F7940065EAA0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF99F2319A9F7940065EAA0 /* UIKit.framework */; };
 		AFF99F4319A9F7940065EAA0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AFF99F4119A9F7940065EAA0 /* InfoPlist.strings */; };
 		AFF99F4519A9F7940065EAA0 /* HomeownerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF99F4419A9F7940065EAA0 /* HomeownerTests.m */; };
+		AFF99F5019A9F9450065EAA0 /* MWItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF99F4F19A9F9450065EAA0 /* MWItemsViewController.m */; };
+		AFF99F5319A9FB2F0065EAA0 /* MWItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF99F5219A9FB2F0065EAA0 /* MWItem.m */; };
+		AFF99F5619A9FCA60065EAA0 /* MWItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF99F5519A9FCA60065EAA0 /* MWItemStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AFBD522D19ACE5BE001E6290 /* MWDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWDetailViewController.h; sourceTree = "<group>"; };
+		AFBD522E19ACE5BE001E6290 /* MWDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWDetailViewController.m; sourceTree = "<group>"; };
+		AFBD522F19ACE5BE001E6290 /* MWDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWDetailViewController.xib; sourceTree = "<group>"; };
 		AFF99F1C19A9F7940065EAA0 /* Homeowner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homeowner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFF99F1F19A9F7940065EAA0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AFF99F2119A9F7940065EAA0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,6 +56,12 @@
 		AFF99F4019A9F7940065EAA0 /* HomeownerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HomeownerTests-Info.plist"; sourceTree = "<group>"; };
 		AFF99F4219A9F7940065EAA0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AFF99F4419A9F7940065EAA0 /* HomeownerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeownerTests.m; sourceTree = "<group>"; };
+		AFF99F4E19A9F9450065EAA0 /* MWItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWItemsViewController.h; sourceTree = "<group>"; };
+		AFF99F4F19A9F9450065EAA0 /* MWItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWItemsViewController.m; sourceTree = "<group>"; };
+		AFF99F5119A9FB2F0065EAA0 /* MWItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWItem.h; sourceTree = "<group>"; };
+		AFF99F5219A9FB2F0065EAA0 /* MWItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWItem.m; sourceTree = "<group>"; };
+		AFF99F5419A9FCA60065EAA0 /* MWItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWItemStore.h; sourceTree = "<group>"; };
+		AFF99F5519A9FCA60065EAA0 /* MWItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWItemStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +122,17 @@
 			isa = PBXGroup;
 			children = (
 				AFF99F2E19A9F7940065EAA0 /* MWAppDelegate.h */,
+				AFBD522D19ACE5BE001E6290 /* MWDetailViewController.h */,
+				AFF99F5119A9FB2F0065EAA0 /* MWItem.h */,
+				AFF99F5419A9FCA60065EAA0 /* MWItemStore.h */,
+				AFF99F4E19A9F9450065EAA0 /* MWItemsViewController.h */,
 				AFF99F2F19A9F7940065EAA0 /* MWAppDelegate.m */,
+				AFBD522E19ACE5BE001E6290 /* MWDetailViewController.m */,
+				AFF99F5219A9FB2F0065EAA0 /* MWItem.m */,
+				AFF99F5519A9FCA60065EAA0 /* MWItemStore.m */,
+				AFF99F4F19A9F9450065EAA0 /* MWItemsViewController.m */,
 				AFF99F3119A9F7940065EAA0 /* Images.xcassets */,
+				AFBD522F19ACE5BE001E6290 /* MWDetailViewController.xib */,
 				AFF99F2619A9F7940065EAA0 /* Supporting Files */,
 			);
 			path = Homeowner;
@@ -220,6 +243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFBD523119ACE5BE001E6290 /* MWDetailViewController.xib in Resources */,
 				AFF99F2A19A9F7940065EAA0 /* InfoPlist.strings in Resources */,
 				AFF99F3219A9F7940065EAA0 /* Images.xcassets in Resources */,
 			);
@@ -240,8 +264,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFF99F5019A9F9450065EAA0 /* MWItemsViewController.m in Sources */,
+				AFBD523019ACE5BE001E6290 /* MWDetailViewController.m in Sources */,
 				AFF99F3019A9F7940065EAA0 /* MWAppDelegate.m in Sources */,
+				AFF99F5319A9FB2F0065EAA0 /* MWItem.m in Sources */,
 				AFF99F2C19A9F7940065EAA0 /* main.m in Sources */,
+				AFF99F5619A9FCA60065EAA0 /* MWItemStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +468,7 @@
 				AFF99F4A19A9F7940065EAA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AFF99F4B19A9F7940065EAA0 /* Build configuration list for PBXNativeTarget "HomeownerTests" */ = {
 			isa = XCConfigurationList;
@@ -448,6 +477,7 @@
 				AFF99F4D19A9F7940065EAA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

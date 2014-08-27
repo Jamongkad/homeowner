@@ -7,12 +7,19 @@
 //
 
 #import "MWAppDelegate.h"
+#import "MWItemsViewController.h"
 
 @implementation MWAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    MWItemsViewController *itemsViewController = [[MWItemsViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController: itemsViewController];
+    
+    self.window.rootViewController = navController;
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
