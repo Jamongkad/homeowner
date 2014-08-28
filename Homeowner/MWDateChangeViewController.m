@@ -7,6 +7,7 @@
 //
 
 #import "MWDateChangeViewController.h"
+#import "MWItem.h"
 
 @interface MWDateChangeViewController ()
 
@@ -27,7 +28,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-     NSLog(@"%@", self.item);
+    [self.datePicker setDate: self.item.dateCreated];
+    [self.datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
+}
+
+-(void) dateChanged:(id)sender {
+    self.item.dateCreated = self.datePicker.date;
 }
 
 - (void)didReceiveMemoryWarning

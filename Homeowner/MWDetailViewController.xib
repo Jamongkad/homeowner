@@ -7,8 +7,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MWDetailViewController">
             <connections>
                 <outlet property="dateLabel" destination="bcB-TG-FiE" id="rxH-Ek-Gyz"/>
+                <outlet property="imageView" destination="Yum-Ef-Ike" id="4wG-4P-kIP"/>
                 <outlet property="nameField" destination="1G2-Ud-c01" id="ELN-21-oyd"/>
                 <outlet property="serialField" destination="ENr-UO-DPA" id="nzu-PR-Goh"/>
+                <outlet property="toolbar" destination="Pfn-z3-lBI" id="kHq-hL-gBe"/>
                 <outlet property="valueField" destination="5cs-h2-cv4" id="2Ft-WV-umS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -71,6 +73,21 @@
                         <action selector="showDateChanger:" destination="-1" eventType="touchUpInside" id="iKn-1Z-vEF"/>
                     </connections>
                 </button>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pfn-z3-lBI">
+                    <rect key="frame" x="0.0" y="980" width="826" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem title="Camera" id="N1H-y7-tCh">
+                            <connections>
+                                <action selector="openCamera:" destination="-1" id="I9Z-0o-2WN"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yum-Ef-Ike">
+                    <rect key="frame" x="112" y="426" width="545" height="524"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

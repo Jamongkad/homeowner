@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *serialField;
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @end
 
 @implementation MWDetailViewController
@@ -50,7 +52,7 @@
     
     self.nameField.text   = self.item.name;
     self.serialField.text = self.item.serialNumber;
-    self.valueField.text  = [NSString stringWithFormat:@"%f", self.item.valueInDollars];
+    self.valueField.text  = [NSString stringWithFormat:@"%.2f", self.item.valueInDollars];
     [self.valueField setKeyboardType:UIKeyboardTypeNumberPad];
     
     self.nameField.delegate = self;
@@ -89,10 +91,22 @@
 
 -(IBAction)showDateChanger:(id)sender {
     MWDateChangeViewController *dateChangeController = [[MWDateChangeViewController alloc] init];
-    
-    dateChangeController.item = self.item;
+    MWItem *item = self.item;
+    dateChangeController.item = item;
     
     [self.navigationController pushViewController:dateChangeController animated:YES];
 }
 
+- (IBAction)openCamera:(id)sender {
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    imagePicker.delegate = self;
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
 @end

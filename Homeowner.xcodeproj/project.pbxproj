@@ -126,21 +126,21 @@
 		AFF99F2519A9F7940065EAA0 /* Homeowner */ = {
 			isa = PBXGroup;
 			children = (
-				AFF99F3119A9F7940065EAA0 /* Images.xcassets */,
 				AFF99F2E19A9F7940065EAA0 /* MWAppDelegate.h */,
-				AFF99F2F19A9F7940065EAA0 /* MWAppDelegate.m */,
 				AF5FD1C319AE469A00E3EBF3 /* MWDateChangeViewController.h */,
-				AF5FD1C419AE469A00E3EBF3 /* MWDateChangeViewController.m */,
-				AF5FD1C519AE469A00E3EBF3 /* MWDateChangeViewController.xib */,
 				AFBD522D19ACE5BE001E6290 /* MWDetailViewController.h */,
-				AFBD522E19ACE5BE001E6290 /* MWDetailViewController.m */,
-				AFBD522F19ACE5BE001E6290 /* MWDetailViewController.xib */,
 				AFF99F5119A9FB2F0065EAA0 /* MWItem.h */,
-				AFF99F5219A9FB2F0065EAA0 /* MWItem.m */,
 				AFF99F5419A9FCA60065EAA0 /* MWItemStore.h */,
-				AFF99F5519A9FCA60065EAA0 /* MWItemStore.m */,
 				AFF99F4E19A9F9450065EAA0 /* MWItemsViewController.h */,
+				AFF99F2F19A9F7940065EAA0 /* MWAppDelegate.m */,
+				AF5FD1C419AE469A00E3EBF3 /* MWDateChangeViewController.m */,
+				AFBD522E19ACE5BE001E6290 /* MWDetailViewController.m */,
+				AFF99F5219A9FB2F0065EAA0 /* MWItem.m */,
+				AFF99F5519A9FCA60065EAA0 /* MWItemStore.m */,
 				AFF99F4F19A9F9450065EAA0 /* MWItemsViewController.m */,
+				AFF99F3119A9F7940065EAA0 /* Images.xcassets */,
+				AF5FD1C519AE469A00E3EBF3 /* MWDateChangeViewController.xib */,
+				AFBD522F19ACE5BE001E6290 /* MWDetailViewController.xib */,
 				AFF99F2619A9F7940065EAA0 /* Supporting Files */,
 			);
 			path = Homeowner;

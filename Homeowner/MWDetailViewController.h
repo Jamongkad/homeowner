@@ -10,7 +10,7 @@
 
 @class MWItem;
 
-@interface MWDetailViewController : UIViewController <UITextFieldDelegate>
+@interface MWDetailViewController : UIViewController <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) MWItem *item;
 

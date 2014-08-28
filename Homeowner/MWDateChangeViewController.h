@@ -6,9 +6,11 @@
 //  Copyright (c) 2014 Mathew Wong. All rights reserved.
 //
 
-@class MWItem;
 #import <UIKit/UIKit.h>
+
+@class MWItem;
 
 @interface MWDateChangeViewController : UIViewController
 @property (nonatomic, strong) MWItem *item;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @end

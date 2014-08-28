@@ -32,10 +32,14 @@
 }
 
 -(NSString *) description {
+    
+    NSDateFormatter *properDate = [[NSDateFormatter alloc] init];
+    [properDate setDateFormat: @"yyyy-MM-dd h:mm:ss a"];
+    NSString *theDate = [properDate stringFromDate:self.dateCreated];
     NSString *descriptionText = [[NSString alloc] initWithFormat:@"%@ (%@): Worth $%.2f, recorded on %@", self.name
                                                                                                       , self.serialNumber
                                                                                                       , self.valueInDollars
-                                                                                                      , self.dateCreated];
+                                                                                                      , theDate];
     
     return descriptionText;
 }

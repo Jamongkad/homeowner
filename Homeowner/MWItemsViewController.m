@@ -98,8 +98,30 @@
 }
 
 -(IBAction) addNewItem:(id)sender {
+    
+    NSDate *today = [[NSDate alloc] init];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendarUnit unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;;
+    NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:today];
+    
+    NSRange days = [calendar rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:today];
+    NSRange hours = [calendar rangeOfUnit:NSHourCalendarUnit inUnit:NSMonthCalendarUnit forDate:today];
+    NSRange minutes = [calendar rangeOfUnit:NSMinuteCalendarUnit inUnit:NSMonthCalendarUnit forDate:today];
+    NSRange seconds = [calendar rangeOfUnit:NSSecondCalendarUnit inUnit:NSMonthCalendarUnit forDate:today];
 
-    MWItem *bee = [[MWItem alloc] initWithName:@"bee" andSerialNumber:@"1234-5678" andPrice:20 andDateCreated:[NSDate date]];
+    int randDays = arc4random() % days.length;
+    int randHours = arc4random() % hours.length;
+    int randMinutes = arc4random() % minutes.length;
+    int randSeconds = arc4random() % seconds.length;
+    
+    [dateComponents setDay:randDays];
+    [dateComponents setHour:randHours];
+    [dateComponents setMinute:randMinutes];
+    [dateComponents setSecond:randSeconds];
+    
+    NSDate *startDate = [calendar dateFromComponents:dateComponents];
+    
+    MWItem *bee = [[MWItem alloc] initWithName:@"bee" andSerialNumber:@"1234-5678" andPrice:20 andDateCreated:startDate];
     [[MWItemStore sharedStore] addItem: bee];
     
     NSInteger lastRow = [[[MWItemStore sharedStore] allItems] indexOfObject:bee];
@@ -142,7 +164,6 @@
     if(indexPath.row == [tableView numberOfRowsInSection:indexPath.section] - 1) {
         return NO;
     }
-    
     return YES;
 }
 
