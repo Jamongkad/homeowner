@@ -7,6 +7,7 @@
 //
 
 #import "MWItemStore.h"
+#import "MWImageStore.h"
 #import "MWItem.h"
 
 @interface MWItemStore()
@@ -49,6 +50,8 @@
 }
 
 -(void) removeItem:(MWItem *)item {
+    NSString *key = item.itemKey;
+    [[MWImageStore sharedStore] deleteImageByKey:key];
     [self.privateItems removeObjectIdenticalTo:item];
 }
 

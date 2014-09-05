@@ -8,6 +8,7 @@
 
 #import "MWDetailViewController.h"
 #import "MWDateChangeViewController.h"
+#import "MWImageStore.h"
 #import "MWItem.h"
 
 @interface MWDetailViewController ()
@@ -17,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (nonatomic) IBOutlet UIButton *deleteButton;
+@property (nonatomic) UIPopoverController *popOverController;
 @end
 
 @implementation MWDetailViewController
@@ -38,7 +41,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bgTapped)];
+    gestureRecognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:gestureRecognizer];
+    
+    if([[MWImageStore sharedStore] fetchImageByKey:self.item.itemKey]) {
+        self.deleteButton.enabled = YES;
+    } else {
+        self.deleteButton.enabled = NO;
+    }
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void) bgTapped {
+    [self.nameField resignFirstResponder];
+    [self.serialField resignFirstResponder];
+    [self.valueField resignFirstResponder];
+    [self.popOverController dismissPopoverAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,6 +86,10 @@
     }
     
     self.dateLabel.text = [dateFormatter stringFromDate:self.item.dateCreated];
+    
+    NSString *imageKey = self.item.itemKey;
+    UIImage *imageToDisplay = [[MWImageStore sharedStore] fetchImageByKey:imageKey];
+    self.imageView.image = imageToDisplay;
 }
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -107,6 +130,44 @@
     }
     
     imagePicker.delegate = self;
+    imagePicker.allowsEditing = YES;
+    
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
+
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    
+    //We assume that this is taken from the camera
+    if(editedImage && originalImage) {
+        self.imageView.image = editedImage;
+        [[MWImageStore sharedStore] setImage:editedImage forKey:self.item.itemKey];
+    } else {
+    //this taken from the photo library
+        self.imageView.image = originalImage;
+        [[MWImageStore sharedStore] setImage:originalImage forKey:self.item.itemKey];
+        [self.popOverController dismissPopoverAnimated:YES];
+    }
+    
+    self.deleteButton.enabled = YES;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)deletePhoto:(id)sender {
+    [[MWImageStore sharedStore] deleteImageByKey:self.item.itemKey];
+    self.deleteButton.enabled = NO;
+    self.imageView.image = nil;
+}
+
+- (IBAction)chooseFromPhotoLibrary:(id)sender {
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePicker.delegate = self;
+    self.popOverController = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
+    self.popOverController.delegate = self;
+    [self.popOverController presentPopoverFromRect:((UIButton *)sender).bounds inView:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
 @end

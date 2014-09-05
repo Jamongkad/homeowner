@@ -13,6 +13,7 @@
 @property (nonatomic) NSString *serialNumber;
 @property (nonatomic) float valueInDollars;
 @property (nonatomic) NSDate *dateCreated;
+@property (nonatomic, copy) NSString *itemKey;
 
 -(instancetype) initWithName:(NSString *) name andSerialNumber:(NSString *) sn andPrice:(float) price andDateCreated:(NSDate *) dc;
 -(NSString *) description;

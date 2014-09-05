@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AF5FD1C619AE469A00E3EBF3 /* MWDateChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD1C419AE469A00E3EBF3 /* MWDateChangeViewController.m */; };
 		AF5FD1C719AE469A00E3EBF3 /* MWDateChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF5FD1C519AE469A00E3EBF3 /* MWDateChangeViewController.xib */; };
+		AF8582CD19B06E5900703302 /* MWImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8582CC19B06E5900703302 /* MWImageStore.m */; };
 		AFBD523019ACE5BE001E6290 /* MWDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBD522E19ACE5BE001E6290 /* MWDetailViewController.m */; };
 		AFBD523119ACE5BE001E6290 /* MWDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBD522F19ACE5BE001E6290 /* MWDetailViewController.xib */; };
 		AFF99F2019A9F7940065EAA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF99F1F19A9F7940065EAA0 /* Foundation.framework */; };
@@ -42,6 +43,8 @@
 		AF5FD1C319AE469A00E3EBF3 /* MWDateChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWDateChangeViewController.h; sourceTree = "<group>"; };
 		AF5FD1C419AE469A00E3EBF3 /* MWDateChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWDateChangeViewController.m; sourceTree = "<group>"; };
 		AF5FD1C519AE469A00E3EBF3 /* MWDateChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWDateChangeViewController.xib; sourceTree = "<group>"; };
+		AF8582CB19B06E5900703302 /* MWImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWImageStore.h; sourceTree = "<group>"; };
+		AF8582CC19B06E5900703302 /* MWImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWImageStore.m; sourceTree = "<group>"; };
 		AFBD522D19ACE5BE001E6290 /* MWDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWDetailViewController.h; sourceTree = "<group>"; };
 		AFBD522E19ACE5BE001E6290 /* MWDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWDetailViewController.m; sourceTree = "<group>"; };
 		AFBD522F19ACE5BE001E6290 /* MWDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWDetailViewController.xib; sourceTree = "<group>"; };
@@ -126,21 +129,23 @@
 		AFF99F2519A9F7940065EAA0 /* Homeowner */ = {
 			isa = PBXGroup;
 			children = (
-				AFF99F2E19A9F7940065EAA0 /* MWAppDelegate.h */,
-				AF5FD1C319AE469A00E3EBF3 /* MWDateChangeViewController.h */,
-				AFBD522D19ACE5BE001E6290 /* MWDetailViewController.h */,
-				AFF99F5119A9FB2F0065EAA0 /* MWItem.h */,
-				AFF99F5419A9FCA60065EAA0 /* MWItemStore.h */,
-				AFF99F4E19A9F9450065EAA0 /* MWItemsViewController.h */,
-				AFF99F2F19A9F7940065EAA0 /* MWAppDelegate.m */,
-				AF5FD1C419AE469A00E3EBF3 /* MWDateChangeViewController.m */,
-				AFBD522E19ACE5BE001E6290 /* MWDetailViewController.m */,
-				AFF99F5219A9FB2F0065EAA0 /* MWItem.m */,
-				AFF99F5519A9FCA60065EAA0 /* MWItemStore.m */,
-				AFF99F4F19A9F9450065EAA0 /* MWItemsViewController.m */,
 				AFF99F3119A9F7940065EAA0 /* Images.xcassets */,
+				AFF99F2E19A9F7940065EAA0 /* MWAppDelegate.h */,
+				AFF99F2F19A9F7940065EAA0 /* MWAppDelegate.m */,
+				AF5FD1C319AE469A00E3EBF3 /* MWDateChangeViewController.h */,
+				AF5FD1C419AE469A00E3EBF3 /* MWDateChangeViewController.m */,
 				AF5FD1C519AE469A00E3EBF3 /* MWDateChangeViewController.xib */,
+				AFBD522D19ACE5BE001E6290 /* MWDetailViewController.h */,
+				AFBD522E19ACE5BE001E6290 /* MWDetailViewController.m */,
 				AFBD522F19ACE5BE001E6290 /* MWDetailViewController.xib */,
+				AF8582CB19B06E5900703302 /* MWImageStore.h */,
+				AF8582CC19B06E5900703302 /* MWImageStore.m */,
+				AFF99F5119A9FB2F0065EAA0 /* MWItem.h */,
+				AFF99F5219A9FB2F0065EAA0 /* MWItem.m */,
+				AFF99F5419A9FCA60065EAA0 /* MWItemStore.h */,
+				AFF99F5519A9FCA60065EAA0 /* MWItemStore.m */,
+				AFF99F4E19A9F9450065EAA0 /* MWItemsViewController.h */,
+				AFF99F4F19A9F9450065EAA0 /* MWItemsViewController.m */,
 				AFF99F2619A9F7940065EAA0 /* Supporting Files */,
 			);
 			path = Homeowner;
@@ -278,6 +283,7 @@
 				AFBD523019ACE5BE001E6290 /* MWDetailViewController.m in Sources */,
 				AFF99F3019A9F7940065EAA0 /* MWAppDelegate.m in Sources */,
 				AFF99F5319A9FB2F0065EAA0 /* MWItem.m in Sources */,
+				AF8582CD19B06E5900703302 /* MWImageStore.m in Sources */,
 				AFF99F2C19A9F7940065EAA0 /* main.m in Sources */,
 				AFF99F5619A9FCA60065EAA0 /* MWItemStore.m in Sources */,
 			);
@@ -402,6 +408,7 @@
 				GCC_PREFIX_HEADER = "Homeowner/Homeowner-Prefix.pch";
 				INFOPLIST_FILE = "Homeowner/Homeowner-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -415,6 +422,7 @@
 				GCC_PREFIX_HEADER = "Homeowner/Homeowner-Prefix.pch";
 				INFOPLIST_FILE = "Homeowner/Homeowner-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
