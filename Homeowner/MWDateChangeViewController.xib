@@ -15,8 +15,8 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="K2L-1r-MFB">
-                    <rect key="frame" x="0.0" y="143" width="768" height="216"/>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="K2L-1r-MFB">
+                    <rect key="frame" x="0.0" y="59" width="768" height="216"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <date key="date" timeIntervalSinceReferenceDate="430851971.25934303">
                         <!--2014-08-27 17:06:11 +0000-->
@@ -48,6 +48,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </datePicker>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="K2L-1r-MFB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OE4-An-P6G"/>
+                <constraint firstItem="K2L-1r-MFB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="59" id="vaX-Cg-0IG"/>
+                <constraint firstAttribute="trailing" secondItem="K2L-1r-MFB" secondAttribute="trailing" id="w0U-Sy-cxY"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
         </view>
     </objects>

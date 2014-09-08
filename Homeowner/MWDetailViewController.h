@@ -13,5 +13,8 @@
 @interface MWDetailViewController : UIViewController <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) MWItem *item;
+@property (nonatomic, copy) void (^dismissBlock)(void);
+
+-(instancetype)initForNewItem:(BOOL)isNew;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "MWAppDelegate.h"
+#import "MWNavigationController.h"
 #import "MWItemsViewController.h"
 
 @implementation MWAppDelegate
@@ -16,7 +17,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     MWItemsViewController *itemsViewController = [[MWItemsViewController alloc] init];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController: itemsViewController];
+    MWNavigationController *navController = [[MWNavigationController alloc] initWithRootViewController: itemsViewController];
     
     self.window.rootViewController = navController;
     

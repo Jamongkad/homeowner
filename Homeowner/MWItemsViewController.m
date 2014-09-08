@@ -9,6 +9,7 @@
 #import "MWDetailViewController.h"
 #import "MWItemsViewController.h"
 #import "MWItemStore.h"
+#import "MWNavigationController.h"
 #import "MWItem.h"
 
 @interface MWItemsViewController()
@@ -55,8 +56,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if(indexPath.row != [self getLastRowIndex]) {
-        
-        MWDetailViewController *detailViewController = [[MWDetailViewController alloc] init];
+       
+        MWDetailViewController *detailViewController = [[MWDetailViewController alloc] initForNewItem:NO];
         MWItem *item = [[MWItemStore sharedStore] allItems][indexPath.row];
         detailViewController.item = item;
         
@@ -90,7 +91,7 @@
     if(indexPath.section == 0) {
         if([[[MWItemStore sharedStore] allItems] count] == (indexPath.row+1)) {
             //item is last
-            cell.accessoryType = UITableViewCellAccessoryNone;//UITableViewCellAccessoryDetailDisclosureButton;
+            cell.accessoryType = UITableViewCellAccessoryNone;
         } else {
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
@@ -100,33 +101,19 @@
 -(IBAction) addNewItem:(id)sender {
     
     NSDate *today = [[NSDate alloc] init];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSCalendarUnit unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;;
-    NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:today];
+    MWItem *newItem = [[MWItem alloc] initWithName:@"" andSerialNumber:@"" andPrice:0 andDateCreated:today];
+    MWDetailViewController *dvc = [[MWDetailViewController alloc] initForNewItem:YES];
+    [dvc setItem:newItem];
     
-    NSRange days = [calendar rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:today];
-    NSRange hours = [calendar rangeOfUnit:NSHourCalendarUnit inUnit:NSMonthCalendarUnit forDate:today];
-    NSRange minutes = [calendar rangeOfUnit:NSMinuteCalendarUnit inUnit:NSMonthCalendarUnit forDate:today];
-    NSRange seconds = [calendar rangeOfUnit:NSSecondCalendarUnit inUnit:NSMonthCalendarUnit forDate:today];
-
-    int randDays = arc4random() % days.length;
-    int randHours = arc4random() % hours.length;
-    int randMinutes = arc4random() % minutes.length;
-    int randSeconds = arc4random() % seconds.length;
+    dvc.dismissBlock = ^{
+        [self.tableView reloadData];
+    };
     
-    [dateComponents setDay:randDays];
-    [dateComponents setHour:randHours];
-    [dateComponents setMinute:randMinutes];
-    [dateComponents setSecond:randSeconds];
+    MWNavigationController *navController = [[MWNavigationController alloc] initWithRootViewController:dvc];
+    //navController.modalPresentationStyle = UIModalPresentationPageSheet;
+    //navController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:navController animated:YES completion:nil];
     
-    NSDate *startDate = [calendar dateFromComponents:dateComponents];
-    
-    MWItem *bee = [[MWItem alloc] initWithName:@"bee" andSerialNumber:@"1234-5678" andPrice:20 andDateCreated:startDate];
-    [[MWItemStore sharedStore] addItem: bee];
-    
-    NSInteger lastRow = [[[MWItemStore sharedStore] allItems] indexOfObject:bee];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {

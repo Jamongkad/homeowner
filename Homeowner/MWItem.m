@@ -47,4 +47,25 @@
     return descriptionText;
 }
 
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.name forKey:@"name"];
+    [aCoder encodeObject:self.serialNumber forKey:@"serialNumber"];
+    [aCoder encodeObject:self.dateCreated forKey:@"dateCreated"];
+    [aCoder encodeFloat:self.valueInDollars forKey:@"valueInDollars"];
+    [aCoder encodeObject:self.itemKey forKey:@"itemKey"];
+}
+
+-(instancetype)initWithCoder:(NSCoder *)aDecoder {
+
+    if(self = [super init]) {
+        _name = [aDecoder decodeObjectForKey:@"name"];
+        _serialNumber = [aDecoder decodeObjectForKey:@"serialNumber"];
+        _valueInDollars = [aDecoder decodeFloatForKey:@"valueInDollars"];
+        _dateCreated = [aDecoder decodeObjectForKey:@"dateCreated"];
+        _itemKey = [aDecoder decodeObjectForKey:@"itemKey"];
+    }
+    
+    return self;
+}
+
 @end

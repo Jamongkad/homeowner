@@ -10,27 +10,25 @@
 #import "MWDateChangeViewController.h"
 #import "MWImageStore.h"
 #import "MWItem.h"
+#import "MWItemStore.h"
 
 @interface MWDetailViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *serialField;
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 @property (nonatomic) IBOutlet UIButton *deleteButton;
 @property (nonatomic) UIPopoverController *popOverController;
 @end
 
 @implementation MWDetailViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-    }
-    return self;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    @throw [NSException exceptionWithName:@"Wrong Initializer" reason:@"Use initForNewItem" userInfo:nil];
+    return nil;
 }
 
 -(void)setItem:(MWItem *)item {
@@ -38,9 +36,9 @@
     self.navigationItem.title = _item.name;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
+    
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bgTapped)];
     gestureRecognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:gestureRecognizer];
@@ -50,7 +48,42 @@
     } else {
         self.deleteButton.enabled = NO;
     }
-    // Do any additional setup after loading the view from its nib.
+    
+}
+
+-(instancetype)initForNewItem:(BOOL)isNew {
+    if(self = [super initWithNibName:nil bundle:nil]) {
+        if(isNew) {
+            UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self
+                                                                                      action:@selector(save:)];
+            self.navigationItem.rightBarButtonItem = doneItem;
+            
+            UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+            self.navigationItem.leftBarButtonItem = cancelItem;
+        }
+    }
+    
+    return self;
+}
+
+- (BOOL)shouldAutorotate
+{
+	return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+	return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
+-(void)save:(id)sender {
+    [[MWItemStore sharedStore] addItem:self.item];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:self.dismissBlock];
+}
+
+-(void)cancel:(id)sender{
+    [[MWItemStore sharedStore] removeItem:self.item];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:self.dismissBlock];
 }
 
 -(void) bgTapped {
@@ -60,8 +93,7 @@
     [self.popOverController dismissPopoverAnimated:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -78,6 +110,18 @@
     self.serialField.delegate = self;
     self.valueField.delegate = self;
     
+    [self updateDateFormatter];
+    
+    NSString *imageKey = self.item.itemKey;
+    UIImage *imageToDisplay = [[MWImageStore sharedStore] fetchImageByKey:imageKey];
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.imageView.image = imageToDisplay;
+    
+    UIInterfaceOrientation io = [[UIApplication sharedApplication] statusBarOrientation];
+    [self prepareViewsForOrientation:io];
+}
+
+-(void) updateDateFormatter {
     static NSDateFormatter *dateFormatter = nil;
     if(!dateFormatter) {
         dateFormatter = [[NSDateFormatter alloc] init];
@@ -86,10 +130,6 @@
     }
     
     self.dateLabel.text = [dateFormatter stringFromDate:self.item.dateCreated];
-    
-    NSString *imageKey = self.item.itemKey;
-    UIImage *imageToDisplay = [[MWImageStore sharedStore] fetchImageByKey:imageKey];
-    self.imageView.image = imageToDisplay;
 }
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -113,14 +153,34 @@
 }
 
 -(IBAction)showDateChanger:(id)sender {
+    
+    if([self.popOverController isPopoverVisible]) {
+        [self.popOverController dismissPopoverAnimated:YES];
+        self.popOverController = nil;
+        return;
+    }
+    
     MWDateChangeViewController *dateChangeController = [[MWDateChangeViewController alloc] init];
     MWItem *item = self.item;
     dateChangeController.item = item;
-    
-    [self.navigationController pushViewController:dateChangeController animated:YES];
+
+    if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        self.popOverController = [[UIPopoverController alloc] initWithContentViewController:dateChangeController];
+        self.popOverController.delegate = self;
+        [self.popOverController presentPopoverFromRect:((UIButton *)sender).bounds inView:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    } else {
+        [self.navigationController pushViewController:dateChangeController animated:YES];
+    }
 }
 
 - (IBAction)openCamera:(id)sender {
+    
+    if([self.popOverController isPopoverVisible]) {
+        [self.popOverController dismissPopoverAnimated:YES];
+        self.popOverController = nil;
+        return;
+    }
+    
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -132,7 +192,13 @@
     imagePicker.delegate = self;
     imagePicker.allowsEditing = YES;
     
-    [self presentViewController:imagePicker animated:YES completion:nil];
+    if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        self.popOverController = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
+        self.popOverController.delegate = self;
+        [self.popOverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    } else {
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
 }
 
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
@@ -152,7 +218,12 @@
     
     self.deleteButton.enabled = YES;
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if(self.popOverController) {
+        [self.popOverController dismissPopoverAnimated:YES];
+        self.popOverController = nil;
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (IBAction)deletePhoto:(id)sender {
@@ -170,4 +241,30 @@
     [self.popOverController presentPopoverFromRect:((UIButton *)sender).bounds inView:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
+-(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [self prepareViewsForOrientation:toInterfaceOrientation];
+}
+
+-(void)prepareViewsForOrientation:(UIInterfaceOrientation)orientation {
+    if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        return;
+    }
+    
+    if(UIInterfaceOrientationIsLandscape(orientation)) {
+        self.imageView.hidden = YES;
+        self.cameraButton.enabled = NO;
+    } else {
+        self.imageView.hidden = NO;
+        self.cameraButton.enabled = YES;
+    }
+}
+
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    NSLog(@"Rotation done");
+}
+
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    [self updateDateFormatter];
+    self.popOverController = nil;
+}
 @end

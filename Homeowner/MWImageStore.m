@@ -16,10 +16,10 @@
 
 +(instancetype)sharedStore {
     static MWImageStore *sharedStore = nil;
-    if(!sharedStore) {
+    static dispatch_once_t onceTaken;
+    dispatch_once(&onceTaken, ^{
         sharedStore = [[self alloc] initPrivate];
-    }
-    
+    });
     return sharedStore;
 }
 

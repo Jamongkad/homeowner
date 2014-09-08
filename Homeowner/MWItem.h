@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MWItem : NSObject
+@interface MWItem : NSObject <NSCoding>
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *serialNumber;
 @property (nonatomic) float valueInDollars;

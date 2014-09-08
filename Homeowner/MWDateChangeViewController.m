@@ -36,6 +36,15 @@
     self.item.dateCreated = self.datePicker.date;
 }
 
+-(BOOL) shouldAutorotate {
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+	return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
