@@ -45,7 +45,6 @@
 }
 
 -(void) addItem:(MWItem *) item {
-    //[self.privateItems addObject:item];
     [self.privateItems insertObject:item atIndex:0];
 }
 
@@ -63,6 +62,17 @@
     MWItem *item = self.privateItems[fromIndex];
     [self.privateItems removeObjectAtIndex:fromIndex];
     [self.privateItems insertObject:item atIndex:toIndex];
+}
+
+-(BOOL)saveChanges {
+    NSString *path = [self itemArchivePath];
+    return [NSKeyedArchiver archiveRootObject:self.privateItems toFile:path];
+}
+
+-(NSString *)itemArchivePath {
+    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [documentDirectories firstObject];
+    return [documentDirectory stringByAppendingPathComponent:@"items.archive"];
 }
 
 -(NSArray *) allItems {
