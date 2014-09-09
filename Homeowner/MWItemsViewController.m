@@ -29,10 +29,6 @@
         navItem.rightBarButtonItem = bbi;
         
         navItem.leftBarButtonItem = self.editButtonItem;
-        
-        MWItem *megz = [[MWItem alloc] initWithName:@"Megz" andSerialNumber:@"131415-161718" andPrice:100 andDateCreated:[NSDate date]];
-        [[MWItemStore sharedStore] addItem: megz];
-
     }
     return self;
 }

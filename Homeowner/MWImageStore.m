@@ -32,22 +32,54 @@
     
     if(self = [super init]) {
         _dictionary = [[NSMutableDictionary alloc] init];
+        
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc addObserver:self selector:@selector(clearCache:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     }
-    
     return  self;
-
 }
 
 -(void) setImage:(UIImage *)image forKey:(id)key {
     self.dictionary[key] = image;
+    NSString *imagePath = [self imagePathForKey:key];
+    NSData *data = UIImageJPEGRepresentation(image, 0.5);
+    [data writeToFile:imagePath atomically:YES];
 }
 
 -(void) deleteImageByKey:(id)key {
+    if(!key) { return; }
     [self.dictionary removeObjectForKey:key];
+    NSString *imagePath = [self imagePathForKey:key];
+    [[NSFileManager defaultManager] removeItemAtPath:imagePath error:nil];
 }
 
 -(UIImage *) fetchImageByKey:(id)key {
-    return self.dictionary[key];
+    
+    UIImage *result = self.dictionary[key];
+    
+    if(!result) {
+        NSString *imagePath = [self imagePathForKey:key];
+        result = [UIImage imageWithContentsOfFile:imagePath];
+        
+        if(result) {
+            self.dictionary[key] = result;
+        } else {
+            NSLog(@"Error: unable to fetch %@", [self imagePathForKey:key]);
+        }
+    }
+    
+    return result;
+}
+
+-(NSString *)imagePathForKey:(NSString *)key {
+    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentaryDirectory = [documentDirectories firstObject];
+    return [documentaryDirectory stringByAppendingPathComponent:key];
+}
+
+-(void)clearCache:(NSNotification *)n{
+    NSLog(@"flushing %lu images out of the cache.", [self.dictionary count]);
+    [self.dictionary removeAllObjects];
 }
 
 @end

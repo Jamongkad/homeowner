@@ -32,8 +32,15 @@
 
 -(instancetype) initPrivate {
     if(self = [super init]) {
-        _privateItems = [[NSMutableArray alloc] init];
-        [_privateItems addObject:@"No more items"];
+        
+        NSString *path = [self itemArchivePath];
+        
+        _privateItems = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        
+        if(!_privateItems) {
+            _privateItems = [[NSMutableArray alloc] init];
+            [_privateItems addObject:@"No more items"];
+        }
     }
     return self;
 }
@@ -55,9 +62,7 @@
 }
 
 -(void) moveItemAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex {
-    if(fromIndex == toIndex) {
-        return;
-    }
+    if(fromIndex == toIndex) { return; }
     
     MWItem *item = self.privateItems[fromIndex];
     [self.privateItems removeObjectAtIndex:fromIndex];
@@ -66,11 +71,13 @@
 
 -(BOOL)saveChanges {
     NSString *path = [self itemArchivePath];
-    return [NSKeyedArchiver archiveRootObject:self.privateItems toFile:path];
+    BOOL response = [NSKeyedArchiver archiveRootObject:self.privateItems toFile:path];
+    return response;
 }
 
+
 -(NSString *)itemArchivePath {
-    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentDirectory = [documentDirectories firstObject];
     return [documentDirectory stringByAppendingPathComponent:@"items.archive"];
 }
