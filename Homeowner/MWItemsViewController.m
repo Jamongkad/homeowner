@@ -11,6 +11,7 @@
 #import "MWItemStore.h"
 #import "MWNavigationController.h"
 #import "MWItem.h"
+#import "MWItemCell.h"
 
 @interface MWItemsViewController()
 
@@ -39,8 +40,9 @@
 
 -(void) viewDidLoad {
     [super viewDidLoad];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
-    
+    //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+    UINib *nib = [UINib nibWithNibName:@"MWItemCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"MWItemCell"];
 }
 
 -(NSInteger) getLastRowIndex {
@@ -52,7 +54,6 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if(indexPath.row != [self getLastRowIndex]) {
-       
         MWDetailViewController *detailViewController = [[MWDetailViewController alloc] initForNewItem:NO];
         MWItem *item = [[MWItemStore sharedStore] allItems][indexPath.row];
         detailViewController.item = item;
@@ -67,19 +68,17 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+    MWItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MWItemCell" forIndexPath:indexPath];
 
     NSArray *items = [[MWItemStore sharedStore] allItems];
     MWItem *item = items[indexPath.row];
     
-    cell.textLabel.text = [item description];
-    
-    if(indexPath.row == [self getLastRowIndex]) {
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-   
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
+    NSLog(@"%@", item);
+
+    cell.nameLabel.text = item.name;
+    cell.serialNumberLabel.text = item.serialNumber;
+    cell.valueLabel.text = [NSString stringWithFormat:@"$%.2f", item.valueInDollars];
+
     return cell;
 }
 
@@ -106,10 +105,7 @@
     };
     
     MWNavigationController *navController = [[MWNavigationController alloc] initWithRootViewController:dvc];
-    //navController.modalPresentationStyle = UIModalPresentationPageSheet;
-    //navController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:navController animated:YES completion:nil];
-    
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -134,19 +130,7 @@
     return @"Remove Item";
 }
 
--(NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
-    
-    if(proposedDestinationIndexPath.row == [self getLastRowIndex]) {
-        return sourceIndexPath;
-    } else {
-        return proposedDestinationIndexPath;
-    }
-}
-
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.row == [tableView numberOfRowsInSection:indexPath.section] - 1) {
-        return NO;
-    }
     return YES;
 }
 

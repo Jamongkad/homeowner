@@ -39,7 +39,6 @@
         
         if(!_privateItems) {
             _privateItems = [[NSMutableArray alloc] init];
-            [_privateItems addObject:@"No more items"];
         }
     }
     return self;

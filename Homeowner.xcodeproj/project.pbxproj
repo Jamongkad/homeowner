@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF3829E719BF403600F2C57D /* MWItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3829E519BF403600F2C57D /* MWItemCell.m */; };
+		AF3829E819BF403600F2C57D /* MWItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3829E619BF403600F2C57D /* MWItemCell.xib */; };
 		AF5FD1C619AE469A00E3EBF3 /* MWDateChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF5FD1C419AE469A00E3EBF3 /* MWDateChangeViewController.m */; };
 		AF5FD1C719AE469A00E3EBF3 /* MWDateChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF5FD1C519AE469A00E3EBF3 /* MWDateChangeViewController.xib */; };
 		AF64CC1119BDB7810056CB99 /* MWNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF64CC1019BDB7810056CB99 /* MWNavigationController.m */; };
@@ -41,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF3829E419BF403600F2C57D /* MWItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWItemCell.h; sourceTree = "<group>"; };
+		AF3829E519BF403600F2C57D /* MWItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWItemCell.m; sourceTree = "<group>"; };
+		AF3829E619BF403600F2C57D /* MWItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWItemCell.xib; sourceTree = "<group>"; };
 		AF5FD1C319AE469A00E3EBF3 /* MWDateChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWDateChangeViewController.h; sourceTree = "<group>"; };
 		AF5FD1C419AE469A00E3EBF3 /* MWDateChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWDateChangeViewController.m; sourceTree = "<group>"; };
 		AF5FD1C519AE469A00E3EBF3 /* MWDateChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWDateChangeViewController.xib; sourceTree = "<group>"; };
@@ -137,6 +142,9 @@
 				AFF99F2F19A9F7940065EAA0 /* MWAppDelegate.m */,
 				AF64CC0F19BDB7810056CB99 /* MWNavigationController.h */,
 				AF64CC1019BDB7810056CB99 /* MWNavigationController.m */,
+				AF3829E419BF403600F2C57D /* MWItemCell.h */,
+				AF3829E519BF403600F2C57D /* MWItemCell.m */,
+				AF3829E619BF403600F2C57D /* MWItemCell.xib */,
 				AF5FD1C319AE469A00E3EBF3 /* MWDateChangeViewController.h */,
 				AF5FD1C419AE469A00E3EBF3 /* MWDateChangeViewController.m */,
 				AF5FD1C519AE469A00E3EBF3 /* MWDateChangeViewController.xib */,
@@ -265,6 +273,7 @@
 				AFF99F2A19A9F7940065EAA0 /* InfoPlist.strings in Resources */,
 				AF5FD1C719AE469A00E3EBF3 /* MWDateChangeViewController.xib in Resources */,
 				AFF99F3219A9F7940065EAA0 /* Images.xcassets in Resources */,
+				AF3829E819BF403600F2C57D /* MWItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF3829E719BF403600F2C57D /* MWItemCell.m in Sources */,
 				AFF99F5019A9F9450065EAA0 /* MWItemsViewController.m in Sources */,
 				AF5FD1C619AE469A00E3EBF3 /* MWDateChangeViewController.m in Sources */,
 				AFBD523019ACE5BE001E6290 /* MWDetailViewController.m in Sources */,
