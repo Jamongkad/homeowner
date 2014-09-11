@@ -14,6 +14,7 @@
 @synthesize serialNumber = _serialNumber;
 @synthesize valueInDollars = _valueInDollars;
 @synthesize dateCreated = _dateCreated;
+@synthesize thumbnail = _thumbnail;
 
 -(instancetype) initWithName:(NSString *)name andSerialNumber:(NSString *)sn andPrice:(float)price andDateCreated:(NSDate *)dc {
     if(self = [super init]) {
@@ -53,6 +54,7 @@
     [aCoder encodeObject:self.dateCreated forKey:@"dateCreated"];
     [aCoder encodeFloat:self.valueInDollars forKey:@"valueInDollars"];
     [aCoder encodeObject:self.itemKey forKey:@"itemKey"];
+    [aCoder encodeObject:self.thumbnail forKey:@"thumbnail"];
 }
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -63,9 +65,35 @@
         _valueInDollars = [aDecoder decodeFloatForKey:@"valueInDollars"];
         _dateCreated = [aDecoder decodeObjectForKey:@"dateCreated"];
         _itemKey = [aDecoder decodeObjectForKey:@"itemKey"];
+        _thumbnail = [aDecoder decodeObjectForKey:@"thumbnail"];
     }
     
     return self;
+}
+
+-(void)setThumbnailFromImage:(UIImage *)image {
+    CGSize origImageSize = image.size;
+    CGRect newRect = CGRectMake(0, 0, 40, 40);
+    
+    float ratio = MAX(newRect.size.width/origImageSize.width, newRect.size.height/origImageSize.height);
+    UIGraphicsBeginImageContextWithOptions(newRect.size, NO, 0.0);
+    
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:newRect cornerRadius:5.0];
+    
+    [path addClip];
+    
+    CGRect projectRect;
+    
+    projectRect.size.width = ratio * origImageSize.width;
+    projectRect.size.height = ratio * origImageSize.height;
+    projectRect.origin.x = (newRect.size.width - projectRect.size.width) / 2.0;
+    projectRect.origin.y = (newRect.size.height - projectRect.size.height) / 2.0;
+    
+    [image drawInRect:projectRect];
+    UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
+    self.thumbnail = smallImage;
+    
+    UIGraphicsEndImageContext();
 }
 
 @end

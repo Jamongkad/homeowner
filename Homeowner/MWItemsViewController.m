@@ -53,13 +53,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if(indexPath.row != [self getLastRowIndex]) {
-        MWDetailViewController *detailViewController = [[MWDetailViewController alloc] initForNewItem:NO];
-        MWItem *item = [[MWItemStore sharedStore] allItems][indexPath.row];
-        detailViewController.item = item;
-        
-        [self.navigationController pushViewController:detailViewController animated:YES];
-    }
+    MWDetailViewController *detailViewController = [[MWDetailViewController alloc] initForNewItem:NO];
+    MWItem *item = [[MWItemStore sharedStore] allItems][indexPath.row];
+    detailViewController.item = item;
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -73,11 +71,14 @@
     NSArray *items = [[MWItemStore sharedStore] allItems];
     MWItem *item = items[indexPath.row];
     
-    NSLog(@"%@", item);
-
     cell.nameLabel.text = item.name;
     cell.serialNumberLabel.text = item.serialNumber;
     cell.valueLabel.text = [NSString stringWithFormat:@"$%.2f", item.valueInDollars];
+    cell.thumbnailView.image = item.thumbnail;
+    
+    cell.actionBlock = ^{
+        NSLog(@"Going to show image for %@", item);
+    };
 
     return cell;
 }

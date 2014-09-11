@@ -208,10 +208,14 @@
     //We assume that this is taken from the camera
     if(editedImage && originalImage) {
         self.imageView.image = editedImage;
+        [self.item setThumbnailFromImage:editedImage];
+        
         [[MWImageStore sharedStore] setImage:editedImage forKey:self.item.itemKey];
     } else {
     //this taken from the photo library
         self.imageView.image = originalImage;
+        [self.item setThumbnailFromImage:originalImage];
+        
         [[MWImageStore sharedStore] setImage:originalImage forKey:self.item.itemKey];
         [self.popOverController dismissPopoverAnimated:YES];
     }

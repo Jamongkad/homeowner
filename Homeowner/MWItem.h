@@ -14,7 +14,9 @@
 @property (nonatomic) float valueInDollars;
 @property (nonatomic) NSDate *dateCreated;
 @property (nonatomic, copy) NSString *itemKey;
+@property (nonatomic, strong) UIImage *thumbnail;
 
 -(instancetype) initWithName:(NSString *) name andSerialNumber:(NSString *) sn andPrice:(float) price andDateCreated:(NSDate *) dc;
 -(NSString *) description;
+-(void)setThumbnailFromImage:(UIImage *)image;
 @end

@@ -15,6 +15,7 @@
 		AF8582CD19B06E5900703302 /* MWImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8582CC19B06E5900703302 /* MWImageStore.m */; };
 		AFBD523019ACE5BE001E6290 /* MWDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBD522E19ACE5BE001E6290 /* MWDetailViewController.m */; };
 		AFBD523119ACE5BE001E6290 /* MWDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBD522F19ACE5BE001E6290 /* MWDetailViewController.xib */; };
+		AFEC160C19C1C56400248BE4 /* MWImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEC160B19C1C56400248BE4 /* MWImageViewController.m */; };
 		AFF99F2019A9F7940065EAA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF99F1F19A9F7940065EAA0 /* Foundation.framework */; };
 		AFF99F2219A9F7940065EAA0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF99F2119A9F7940065EAA0 /* CoreGraphics.framework */; };
 		AFF99F2419A9F7940065EAA0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF99F2319A9F7940065EAA0 /* UIKit.framework */; };
@@ -56,6 +57,8 @@
 		AFBD522D19ACE5BE001E6290 /* MWDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWDetailViewController.h; sourceTree = "<group>"; };
 		AFBD522E19ACE5BE001E6290 /* MWDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWDetailViewController.m; sourceTree = "<group>"; };
 		AFBD522F19ACE5BE001E6290 /* MWDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWDetailViewController.xib; sourceTree = "<group>"; };
+		AFEC160A19C1C56400248BE4 /* MWImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWImageViewController.h; sourceTree = "<group>"; };
+		AFEC160B19C1C56400248BE4 /* MWImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWImageViewController.m; sourceTree = "<group>"; };
 		AFF99F1C19A9F7940065EAA0 /* Homeowner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homeowner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFF99F1F19A9F7940065EAA0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AFF99F2119A9F7940065EAA0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -140,11 +143,6 @@
 				AFF99F3119A9F7940065EAA0 /* Images.xcassets */,
 				AFF99F2E19A9F7940065EAA0 /* MWAppDelegate.h */,
 				AFF99F2F19A9F7940065EAA0 /* MWAppDelegate.m */,
-				AF64CC0F19BDB7810056CB99 /* MWNavigationController.h */,
-				AF64CC1019BDB7810056CB99 /* MWNavigationController.m */,
-				AF3829E419BF403600F2C57D /* MWItemCell.h */,
-				AF3829E519BF403600F2C57D /* MWItemCell.m */,
-				AF3829E619BF403600F2C57D /* MWItemCell.xib */,
 				AF5FD1C319AE469A00E3EBF3 /* MWDateChangeViewController.h */,
 				AF5FD1C419AE469A00E3EBF3 /* MWDateChangeViewController.m */,
 				AF5FD1C519AE469A00E3EBF3 /* MWDateChangeViewController.xib */,
@@ -155,10 +153,17 @@
 				AF8582CC19B06E5900703302 /* MWImageStore.m */,
 				AFF99F5119A9FB2F0065EAA0 /* MWItem.h */,
 				AFF99F5219A9FB2F0065EAA0 /* MWItem.m */,
+				AF3829E419BF403600F2C57D /* MWItemCell.h */,
+				AF3829E519BF403600F2C57D /* MWItemCell.m */,
+				AF3829E619BF403600F2C57D /* MWItemCell.xib */,
 				AFF99F5419A9FCA60065EAA0 /* MWItemStore.h */,
 				AFF99F5519A9FCA60065EAA0 /* MWItemStore.m */,
 				AFF99F4E19A9F9450065EAA0 /* MWItemsViewController.h */,
 				AFF99F4F19A9F9450065EAA0 /* MWItemsViewController.m */,
+				AFEC160A19C1C56400248BE4 /* MWImageViewController.h */,
+				AFEC160B19C1C56400248BE4 /* MWImageViewController.m */,
+				AF64CC0F19BDB7810056CB99 /* MWNavigationController.h */,
+				AF64CC1019BDB7810056CB99 /* MWNavigationController.m */,
 				AFF99F2619A9F7940065EAA0 /* Supporting Files */,
 			);
 			path = Homeowner;
@@ -302,6 +307,7 @@
 				AFF99F2C19A9F7940065EAA0 /* main.m in Sources */,
 				AFF99F5619A9FCA60065EAA0 /* MWItemStore.m in Sources */,
 				AF64CC1119BDB7810056CB99 /* MWNavigationController.m in Sources */,
+				AFEC160C19C1C56400248BE4 /* MWImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
