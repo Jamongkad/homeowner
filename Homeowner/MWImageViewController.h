@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MWImageViewController : UIViewController
-
+@property(nonatomic, strong) UIImage *image;
 @end

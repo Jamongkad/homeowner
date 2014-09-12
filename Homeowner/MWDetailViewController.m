@@ -22,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 @property (nonatomic) IBOutlet UIButton *deleteButton;
 @property (nonatomic) UIPopoverController *popOverController;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *serialNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
 @end
 
 @implementation MWDetailViewController
@@ -63,6 +66,8 @@
         }
     }
     
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(updateFonts) name:UIContentSizeCategoryDidChangeNotification object:nil];
     return self;
 }
 
@@ -119,6 +124,7 @@
     
     UIInterfaceOrientation io = [[UIApplication sharedApplication] statusBarOrientation];
     [self prepareViewsForOrientation:io];
+    [self updateFonts];
 }
 
 -(void) updateDateFormatter {
@@ -232,6 +238,8 @@
 
 - (IBAction)deletePhoto:(id)sender {
     [[MWImageStore sharedStore] deleteImageByKey:self.item.itemKey];
+    //delete thumbnail so NSCoder can update its serialization
+    self.item.thumbnail = nil;
     self.deleteButton.enabled = NO;
     self.imageView.image = nil;
 }
@@ -270,5 +278,21 @@
 -(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
     [self updateDateFormatter];
     self.popOverController = nil;
+}
+
+-(void)updateFonts {
+    UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.nameLabel.font = font;
+    self.serialNumberLabel.font = font;
+    self.valueLabel.font = font;
+    self.dateLabel.font = font;
+    self.nameField.font = font;
+    self.serialField.font = font;
+    self.valueField.font = font;
+}
+
+-(void)dealloc {
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter removeObserver:self];
 }
 @end

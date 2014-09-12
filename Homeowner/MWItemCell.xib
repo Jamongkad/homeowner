@@ -17,7 +17,7 @@
                         <rect key="frame" x="51" y="3" width="600" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="600" id="D4K-q1-k1j"/>
+                            <constraint firstAttribute="width" constant="600" id="MlV-qH-TDl"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
@@ -39,7 +39,7 @@
                         <rect key="frame" x="3" y="2" width="40" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="knm-md-Kq9"/>
+                            <constraint firstAttribute="width" constant="40" id="lle-Dq-vbv"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Skv-zt-SUe">
@@ -54,24 +54,24 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="053-kg-nRF" firstAttribute="trailing" secondItem="Skv-zt-SUe" secondAttribute="trailing" id="0ue-DH-2S4"/>
                     <constraint firstItem="LcU-3u-TZV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="29y-sI-Yoh"/>
-                    <constraint firstItem="053-kg-nRF" firstAttribute="leading" secondItem="Skv-zt-SUe" secondAttribute="leading" id="5t8-S4-HaP"/>
-                    <constraint firstItem="Mvi-ND-8OV" firstAttribute="leading" secondItem="053-kg-nRF" secondAttribute="trailing" constant="8" symbolic="YES" id="6UP-wa-y97"/>
-                    <constraint firstItem="053-kg-nRF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="9DL-2j-LDY"/>
+                    <constraint firstItem="053-kg-nRF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="2T6-xX-PAF"/>
+                    <constraint firstItem="LcU-3u-TZV" firstAttribute="leading" secondItem="Mvi-ND-8OV" secondAttribute="trailing" constant="8" symbolic="YES" id="9Ck-Ym-Oub"/>
+                    <constraint firstItem="053-kg-nRF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="3" id="F5G-8b-TRF"/>
                     <constraint firstItem="6xF-AV-TIx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" symbolic="YES" id="GDi-Jb-IYz"/>
-                    <constraint firstAttribute="bottom" secondItem="053-kg-nRF" secondAttribute="bottom" constant="1" id="LY4-dp-GyW"/>
-                    <constraint firstItem="6xF-AV-TIx" firstAttribute="leading" secondItem="053-kg-nRF" secondAttribute="trailing" constant="8" symbolic="YES" id="TIe-Vd-Cae"/>
-                    <constraint firstAttribute="bottom" secondItem="Mvi-ND-8OV" secondAttribute="bottom" constant="20" symbolic="YES" id="TQx-JU-v1q"/>
-                    <constraint firstItem="LcU-3u-TZV" firstAttribute="leading" secondItem="Mvi-ND-8OV" secondAttribute="trailing" constant="8" symbolic="YES" id="UVm-zL-cmH"/>
-                    <constraint firstItem="053-kg-nRF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="3" id="Wb3-zz-9lm"/>
+                    <constraint firstItem="053-kg-nRF" firstAttribute="bottom" secondItem="Skv-zt-SUe" secondAttribute="bottom" id="Jjd-zK-ITR"/>
+                    <constraint firstAttribute="bottom" secondItem="Mvi-ND-8OV" secondAttribute="bottom" constant="20" symbolic="YES" id="O0Q-Cf-oZH"/>
+                    <constraint firstAttribute="bottom" secondItem="053-kg-nRF" secondAttribute="bottom" constant="1" id="OwL-04-Zw9"/>
+                    <constraint firstItem="Mvi-ND-8OV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="SU2-Dd-C5t"/>
+                    <constraint firstItem="053-kg-nRF" firstAttribute="leading" secondItem="Skv-zt-SUe" secondAttribute="leading" id="XeH-Us-K0J"/>
+                    <constraint firstItem="Mvi-ND-8OV" firstAttribute="leading" secondItem="053-kg-nRF" secondAttribute="trailing" constant="8" symbolic="YES" id="Ytl-cU-jYq"/>
                     <constraint firstItem="LcU-3u-TZV" firstAttribute="leading" secondItem="6xF-AV-TIx" secondAttribute="trailing" constant="8" symbolic="YES" id="a8z-RF-tag"/>
-                    <constraint firstItem="053-kg-nRF" firstAttribute="bottom" secondItem="Skv-zt-SUe" secondAttribute="bottom" id="e48-wR-6De"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LcU-3u-TZV" secondAttribute="trailing" constant="6" id="iDC-oQ-MTj"/>
+                    <constraint firstItem="053-kg-nRF" firstAttribute="top" secondItem="Skv-zt-SUe" secondAttribute="top" id="jQS-Jx-6bk"/>
                     <constraint firstAttribute="trailing" secondItem="LcU-3u-TZV" secondAttribute="trailing" constant="6" id="nSR-v0-Zbq"/>
-                    <constraint firstItem="053-kg-nRF" firstAttribute="top" secondItem="Skv-zt-SUe" secondAttribute="top" id="naf-vy-K46"/>
+                    <constraint firstItem="6xF-AV-TIx" firstAttribute="leading" secondItem="053-kg-nRF" secondAttribute="trailing" constant="8" symbolic="YES" id="qXX-2N-OX4"/>
+                    <constraint firstItem="053-kg-nRF" firstAttribute="trailing" secondItem="Skv-zt-SUe" secondAttribute="trailing" id="rNm-80-sda"/>
                     <constraint firstAttribute="bottom" secondItem="6xF-AV-TIx" secondAttribute="bottom" constant="3" id="wAF-QL-Wcs"/>
-                    <constraint firstItem="Mvi-ND-8OV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="wD1-8K-xCQ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

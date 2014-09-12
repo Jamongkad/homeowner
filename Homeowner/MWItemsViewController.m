@@ -8,6 +8,7 @@
 
 #import "MWDetailViewController.h"
 #import "MWItemsViewController.h"
+#import "MWImageStore.h"
 #import "MWItemStore.h"
 #import "MWNavigationController.h"
 #import "MWItem.h"
@@ -41,7 +42,6 @@
 
 -(void) viewDidLoad {
     [super viewDidLoad];
-    //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
     UINib *nib = [UINib nibWithNibName:@"MWItemCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"MWItemCell"];
 }
@@ -77,11 +77,35 @@
     cell.valueLabel.text = [NSString stringWithFormat:@"$%.2f", item.valueInDollars];
     cell.thumbnailView.image = item.thumbnail;
     
+    __weak MWItemCell *weakCell = cell;
+    
     cell.actionBlock = ^{
-        NSLog(@"Going to show image for %@", item);
+        
+        MWItemCell *strongCell = weakCell;
+        
+        if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            NSString *itemKey = item.itemKey;
+            UIImage *img = [[MWImageStore sharedStore] fetchImageByKey:itemKey];
+            if(!img) {
+                return;
+            }
+            
+            CGRect rect = [self.view convertRect:strongCell.thumbnailView.bounds fromView:strongCell.thumbnailView];
+            MWImageViewController *ivc = [[MWImageViewController alloc] init];
+            ivc.image = img;
+            
+            self.imagePopover = [[UIPopoverController alloc] initWithContentViewController:ivc];
+            self.imagePopover.delegate = self;
+            self.imagePopover.popoverContentSize = CGSizeMake(600, 600);
+            [self.imagePopover presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        }
     };
 
     return cell;
+}
+
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    self.imagePopover = nil;
 }
 
 -(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {

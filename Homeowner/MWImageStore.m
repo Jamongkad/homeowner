@@ -53,7 +53,7 @@
     [[NSFileManager defaultManager] removeItemAtPath:imagePath error:nil];
 }
 
--(UIImage *) fetchImageByKey:(id)key {
+-(UIImage *)fetchImageByKey:(id)key {
     
     UIImage *result = self.dictionary[key];
     

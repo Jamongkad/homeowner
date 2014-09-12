@@ -58,7 +58,7 @@
 }
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
-
+    
     if(self = [super init]) {
         _name = [aDecoder decodeObjectForKey:@"name"];
         _serialNumber = [aDecoder decodeObjectForKey:@"serialNumber"];

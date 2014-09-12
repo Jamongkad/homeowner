@@ -9,10 +9,12 @@
 #import "MWImageViewController.h"
 
 @interface MWImageViewController ()
-@property(nonatomic, strong) UIImage *image;
+
 @end
 
 @implementation MWImageViewController
+
+@synthesize image = _image;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
