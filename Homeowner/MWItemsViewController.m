@@ -12,9 +12,10 @@
 #import "MWNavigationController.h"
 #import "MWItem.h"
 #import "MWItemCell.h"
+#import "MWImageViewController.h"
 
-@interface MWItemsViewController()
-
+@interface MWItemsViewController() <UIPopoverControllerDelegate>
+@property (nonatomic, strong) UIPopoverController *imagePopover;
 @end
 
 @implementation MWItemsViewController

@@ -9,7 +9,7 @@
 #import "MWImageViewController.h"
 
 @interface MWImageViewController ()
-
+@property(nonatomic, strong) UIImage *image;
 @end
 
 @implementation MWImageViewController
@@ -27,6 +27,12 @@
     UIImageView *imageView = [[UIImageView alloc] init];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.view = imageView;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    UIImageView *imageView = (UIImageView *)self.view;
+    imageView.image = self.image;
 }
 
 - (void)viewDidLoad
