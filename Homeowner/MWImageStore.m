@@ -78,7 +78,6 @@
 }
 
 -(void)clearCache:(NSNotification *)n{
-    NSLog(@"flushing %lu images out of the cache.", [self.dictionary count]);
     [self.dictionary removeAllObjects];
 }
 

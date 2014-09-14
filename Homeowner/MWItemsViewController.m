@@ -72,7 +72,7 @@
     NSArray *items = [[MWItemStore sharedStore] allItems];
     MWItem *item = items[indexPath.row];
     
-    cell.nameLabel.text = item.name;
+    cell.nameLabel.text =[NSString stringWithFormat:@"pwet %@", item.name];
     cell.serialNumberLabel.text = item.serialNumber;
     cell.valueLabel.text = [NSString stringWithFormat:@"$%.2f", item.valueInDollars];
     cell.thumbnailView.image = item.thumbnail;
