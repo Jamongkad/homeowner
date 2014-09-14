@@ -70,8 +70,7 @@
 
 -(BOOL)saveChanges {
     NSString *path = [self itemArchivePath];
-    BOOL response = [NSKeyedArchiver archiveRootObject:self.privateItems toFile:path];
-    return response;
+    return [NSKeyedArchiver archiveRootObject:self.privateItems toFile:path];
 }
 
 
