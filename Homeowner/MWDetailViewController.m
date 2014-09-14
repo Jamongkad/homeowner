@@ -51,7 +51,6 @@
     } else {
         self.deleteButton.enabled = NO;
     }
-    
 }
 
 -(instancetype)initForNewItem:(BOOL)isNew {

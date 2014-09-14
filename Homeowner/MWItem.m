@@ -44,7 +44,6 @@
                                                                                                       , self.serialNumber
                                                                                                       , self.valueInDollars
                                                                                                       , theDate];
-    
     return descriptionText;
 }
 
@@ -52,9 +51,9 @@
     [aCoder encodeObject:self.name forKey:@"name"];
     [aCoder encodeObject:self.serialNumber forKey:@"serialNumber"];
     [aCoder encodeObject:self.dateCreated forKey:@"dateCreated"];
-    [aCoder encodeFloat:self.valueInDollars forKey:@"valueInDollars"];
     [aCoder encodeObject:self.itemKey forKey:@"itemKey"];
     [aCoder encodeObject:self.thumbnail forKey:@"thumbnail"];
+    [aCoder encodeFloat:self.valueInDollars forKey:@"valueInDollars"];
 }
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
