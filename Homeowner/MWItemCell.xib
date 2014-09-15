@@ -13,30 +13,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvi-ND-8OV">
-                        <rect key="frame" x="51" y="3" width="600" height="20"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvi-ND-8OV">
+                        <rect key="frame" x="51" y="3" width="666" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LcU-3u-TZV">
-                        <rect key="frame" x="659" y="11" width="103" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LcU-3u-TZV">
+                        <rect key="frame" x="713" y="11" width="55" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="55" id="cWg-Wz-T6M"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xF-AV-TIx">
-                        <rect key="frame" x="51" y="20" width="600" height="20"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xF-AV-TIx">
+                        <rect key="frame" x="51" y="20" width="666" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="053-kg-nRF">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="053-kg-nRF">
                         <rect key="frame" x="3" y="2" width="40" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Skv-zt-SUe">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Skv-zt-SUe">
                         <rect key="frame" x="3" y="2" width="40" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal">
@@ -47,6 +50,26 @@
                         </connections>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="Skv-zt-SUe" firstAttribute="bottom" secondItem="053-kg-nRF" secondAttribute="bottom" id="0GN-E1-IbR"/>
+                    <constraint firstItem="6xF-AV-TIx" firstAttribute="leading" secondItem="Skv-zt-SUe" secondAttribute="trailing" constant="8" symbolic="YES" id="3rD-Q1-4ws"/>
+                    <constraint firstItem="Skv-zt-SUe" firstAttribute="leading" secondItem="053-kg-nRF" secondAttribute="leading" id="8XS-h5-1SQ"/>
+                    <constraint firstAttribute="trailing" secondItem="LcU-3u-TZV" secondAttribute="trailing" id="Gvk-uL-aKx"/>
+                    <constraint firstItem="LcU-3u-TZV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="IMg-ao-7jC"/>
+                    <constraint firstItem="6xF-AV-TIx" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="MfR-7o-FHZ"/>
+                    <constraint firstItem="Mvi-ND-8OV" firstAttribute="trailing" secondItem="6xF-AV-TIx" secondAttribute="trailing" id="NGL-lH-xgw"/>
+                    <constraint firstItem="053-kg-nRF" firstAttribute="top" secondItem="Skv-zt-SUe" secondAttribute="top" id="Qts-hB-oxd"/>
+                    <constraint firstItem="Mvi-ND-8OV" firstAttribute="leading" secondItem="053-kg-nRF" secondAttribute="trailing" constant="8" symbolic="YES" id="Tqu-WD-xYa"/>
+                    <constraint firstItem="6xF-AV-TIx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" symbolic="YES" id="XtJ-eE-zNC"/>
+                    <constraint firstItem="Skv-zt-SUe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="YGw-s1-X13"/>
+                    <constraint firstItem="Mvi-ND-8OV" firstAttribute="leading" secondItem="Skv-zt-SUe" secondAttribute="trailing" constant="8" symbolic="YES" id="cHP-mB-HrI"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6xF-AV-TIx" secondAttribute="bottom" constant="3" id="f6w-zq-xCV"/>
+                    <constraint firstAttribute="bottom" secondItem="053-kg-nRF" secondAttribute="bottom" constant="1" id="v61-ld-wsb"/>
+                    <constraint firstItem="Mvi-ND-8OV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="x2O-IJ-9xb"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Mvi-ND-8OV" secondAttribute="bottom" constant="20" symbolic="YES" id="yJs-fP-ee5"/>
+                    <constraint firstItem="Skv-zt-SUe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="3" id="yk7-Rd-xMr"/>
+                    <constraint firstAttribute="trailing" secondItem="Mvi-ND-8OV" secondAttribute="trailing" constant="51" id="zGK-CP-v6L"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="nameLabel" destination="Mvi-ND-8OV" id="ARW-qB-Gc8"/>

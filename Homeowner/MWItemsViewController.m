@@ -75,8 +75,14 @@
     cell.nameLabel.text =[NSString stringWithFormat:@"pwet %@", item.name];
     cell.serialNumberLabel.text = item.serialNumber;
     cell.valueLabel.text = [NSString stringWithFormat:@"$%.2f", item.valueInDollars];
-    cell.thumbnailView.image = item.thumbnail;
     
+    if(item.thumbnail) {
+        cell.thumbnailView.image = item.thumbnail;
+    } else {
+        UIImage *defaultImage = [UIImage imageNamed:@"nophoto.jpg"];
+        cell.thumbnailView.image = defaultImage;
+    }
+  
     __weak MWItemCell *weakCell = cell;
     
     cell.actionBlock = ^{

@@ -32,7 +32,6 @@
     
     if(self = [super init]) {
         _dictionary = [[NSMutableDictionary alloc] init];
-        
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc addObserver:self selector:@selector(clearCache:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     }

@@ -17,6 +17,7 @@
 		AF8582CD19B06E5900703302 /* MWImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8582CC19B06E5900703302 /* MWImageStore.m */; };
 		AFBD523019ACE5BE001E6290 /* MWDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBD522E19ACE5BE001E6290 /* MWDetailViewController.m */; };
 		AFBD523119ACE5BE001E6290 /* MWDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBD522F19ACE5BE001E6290 /* MWDetailViewController.xib */; };
+		AFC44FE819C73AA400ACBC6A /* nophoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AFC44FE719C73AA400ACBC6A /* nophoto.jpg */; };
 		AFEC160C19C1C56400248BE4 /* MWImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFEC160B19C1C56400248BE4 /* MWImageViewController.m */; };
 		AFF99F2019A9F7940065EAA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF99F1F19A9F7940065EAA0 /* Foundation.framework */; };
 		AFF99F2219A9F7940065EAA0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF99F2119A9F7940065EAA0 /* CoreGraphics.framework */; };
@@ -62,6 +63,7 @@
 		AFBD522D19ACE5BE001E6290 /* MWDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWDetailViewController.h; sourceTree = "<group>"; };
 		AFBD522E19ACE5BE001E6290 /* MWDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWDetailViewController.m; sourceTree = "<group>"; };
 		AFBD522F19ACE5BE001E6290 /* MWDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWDetailViewController.xib; sourceTree = "<group>"; };
+		AFC44FE719C73AA400ACBC6A /* nophoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nophoto.jpg; sourceTree = "<group>"; };
 		AFEC160A19C1C56400248BE4 /* MWImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWImageViewController.h; sourceTree = "<group>"; };
 		AFEC160B19C1C56400248BE4 /* MWImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWImageViewController.m; sourceTree = "<group>"; };
 		AFF99F1C19A9F7940065EAA0 /* Homeowner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homeowner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +166,7 @@
 				AF3829E419BF403600F2C57D /* MWItemCell.h */,
 				AF3829E519BF403600F2C57D /* MWItemCell.m */,
 				AF3829E619BF403600F2C57D /* MWItemCell.xib */,
+				AFC44FE719C73AA400ACBC6A /* nophoto.jpg */,
 				AFF99F5419A9FCA60065EAA0 /* MWItemStore.h */,
 				AFF99F5519A9FCA60065EAA0 /* MWItemStore.m */,
 				AFF99F4E19A9F9450065EAA0 /* MWItemsViewController.h */,
@@ -289,6 +292,7 @@
 				AFF99F2A19A9F7940065EAA0 /* InfoPlist.strings in Resources */,
 				AF5FD1C719AE469A00E3EBF3 /* MWDateChangeViewController.xib in Resources */,
 				AFF99F3219A9F7940065EAA0 /* Images.xcassets in Resources */,
+				AFC44FE819C73AA400ACBC6A /* nophoto.jpg in Resources */,
 				AF3829E819BF403600F2C57D /* MWItemCell.xib in Resources */,
 				AF32A8F019C205DB00FB68AD /* stylesheet.cas in Resources */,
 			);
