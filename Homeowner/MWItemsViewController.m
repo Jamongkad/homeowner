@@ -127,10 +127,10 @@
 
 -(IBAction) addNewItem:(id)sender {
     
-    NSDate *today = [[NSDate alloc] init];
-    MWItem *newItem = [[MWItem alloc] initWithName:@"" andSerialNumber:@"" andPrice:0 andDateCreated:today];
+    //NSDate *today = [[NSDate alloc] init];
+    //MWItem *newItem = [[MWItem alloc] initWithName:@"" andSerialNumber:@"" andPrice:0 andDateCreated:today];
     MWDetailViewController *dvc = [[MWDetailViewController alloc] initForNewItem:YES];
-    [dvc setItem:newItem];
+    //[dvc setItem:newItem];
     
     dvc.dismissBlock = ^{
         [self.tableView reloadData];
