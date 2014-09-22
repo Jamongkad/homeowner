@@ -8,6 +8,7 @@
 
 #import "MWDetailViewController.h"
 #import "MWDateChangeViewController.h"
+#import "MWAssetTypeViewController.h"
 #import "MWImageStore.h"
 #import "MWItem.h"
 #import "MWItemStore.h"
@@ -22,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 @property (nonatomic) IBOutlet UIButton *deleteButton;
 @property (nonatomic) UIPopoverController *popOverController;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *assetTypeButton;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *serialNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
@@ -81,7 +83,6 @@
 }
 
 -(void)save:(id)sender {
-    [[MWItemStore sharedStore] addItem:self.item];
     [self.presentingViewController dismissViewControllerAnimated:YES completion:self.dismissBlock];
 }
 
@@ -123,7 +124,26 @@
     
     UIInterfaceOrientation io = [[UIApplication sharedApplication] statusBarOrientation];
     [self prepareViewsForOrientation:io];
+    
+    NSString *typeLabel = [self.item.assetType valueForKey:@"label"];
+    if(!typeLabel) {
+        typeLabel = @"None";
+    }
+    
+    self.assetTypeButton.title = [NSString stringWithFormat:@"Type: %@", typeLabel];
+    
     [self updateFonts];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.view endEditing:YES];
+    
+    MWItem *item = self.item;
+    item.name = self.nameField.text;
+    item.serialNumber = self.serialField.text;
+    item.valueInDollars = [self.valueField.text floatValue];
 }
 
 -(void) updateDateFormatter {
@@ -144,17 +164,6 @@
 -(BOOL) textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
-}
-
-- (void) viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    [self.view endEditing:YES];
-    
-    MWItem *item = self.item;
-    item.name = self.nameField.text;
-    item.serialNumber = self.serialField.text;
-    item.valueInDollars = [self.valueField.text floatValue];
 }
 
 -(IBAction)showDateChanger:(id)sender {
@@ -288,6 +297,12 @@
     self.nameField.font = font;
     self.serialField.font = font;
     self.valueField.font = font;
+}
+- (IBAction)showAssetTypePicker:(id)sender {
+    [self.view endEditing:YES];
+    MWAssetTypeViewController *avc = [[MWAssetTypeViewController alloc] init];
+    avc.item = self.item;
+    [self.navigationController pushViewController:avc animated:YES];
 }
 
 -(void)dealloc {

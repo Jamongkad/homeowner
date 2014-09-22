@@ -14,8 +14,8 @@
 @property (nonatomic, readonly) NSArray *allItems;
 +(instancetype)sharedStore;
 -(MWItem *) createItem;
--(void) addItem:(MWItem *) item;
 -(void) removeItem:(MWItem *) item;
 -(void) moveItemAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex;
 -(BOOL) saveChanges;
+-(NSArray *)allAssetTypes;
 @end

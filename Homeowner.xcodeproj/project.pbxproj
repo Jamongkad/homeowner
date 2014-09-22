@@ -22,6 +22,7 @@
 		AFF7728419CC20280077115D /* Homeowner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AFF7728219CC20280077115D /* Homeowner.xcdatamodeld */; };
 		AFF7728719CC22DF0077115D /* MWImageTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF7728619CC22DF0077115D /* MWImageTransformer.m */; };
 		AFF7728D19CC2B490077115D /* MWItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF7728C19CC2B490077115D /* MWItem.m */; };
+		AFF7729319CC85320077115D /* MWAssetTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF7729219CC85320077115D /* MWAssetTypeViewController.m */; };
 		AFF99F2019A9F7940065EAA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF99F1F19A9F7940065EAA0 /* Foundation.framework */; };
 		AFF99F2219A9F7940065EAA0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF99F2119A9F7940065EAA0 /* CoreGraphics.framework */; };
 		AFF99F2419A9F7940065EAA0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF99F2319A9F7940065EAA0 /* UIKit.framework */; };
@@ -73,6 +74,8 @@
 		AFF7728619CC22DF0077115D /* MWImageTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWImageTransformer.m; sourceTree = "<group>"; };
 		AFF7728B19CC2B490077115D /* MWItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWItem.h; sourceTree = "<group>"; };
 		AFF7728C19CC2B490077115D /* MWItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWItem.m; sourceTree = "<group>"; };
+		AFF7729119CC85320077115D /* MWAssetTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWAssetTypeViewController.h; sourceTree = "<group>"; };
+		AFF7729219CC85320077115D /* MWAssetTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWAssetTypeViewController.m; sourceTree = "<group>"; };
 		AFF99F1C19A9F7940065EAA0 /* Homeowner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homeowner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFF99F1F19A9F7940065EAA0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AFF99F2119A9F7940065EAA0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -155,36 +158,38 @@
 		AFF99F2519A9F7940065EAA0 /* Homeowner */ = {
 			isa = PBXGroup;
 			children = (
+				AFF7728219CC20280077115D /* Homeowner.xcdatamodeld */,
 				AFF99F3119A9F7940065EAA0 /* Images.xcassets */,
 				AFF99F2E19A9F7940065EAA0 /* MWAppDelegate.h */,
 				AFF99F2F19A9F7940065EAA0 /* MWAppDelegate.m */,
-				AFF7728519CC22DF0077115D /* MWImageTransformer.h */,
-				AFF7728619CC22DF0077115D /* MWImageTransformer.m */,
+				AFF7729119CC85320077115D /* MWAssetTypeViewController.h */,
+				AFF7729219CC85320077115D /* MWAssetTypeViewController.m */,
 				AF5FD1C319AE469A00E3EBF3 /* MWDateChangeViewController.h */,
 				AF5FD1C419AE469A00E3EBF3 /* MWDateChangeViewController.m */,
-				AFF7728219CC20280077115D /* Homeowner.xcdatamodeld */,
 				AF5FD1C519AE469A00E3EBF3 /* MWDateChangeViewController.xib */,
 				AFBD522D19ACE5BE001E6290 /* MWDetailViewController.h */,
 				AFBD522E19ACE5BE001E6290 /* MWDetailViewController.m */,
 				AFBD522F19ACE5BE001E6290 /* MWDetailViewController.xib */,
 				AF8582CB19B06E5900703302 /* MWImageStore.h */,
 				AF8582CC19B06E5900703302 /* MWImageStore.m */,
+				AFF7728519CC22DF0077115D /* MWImageTransformer.h */,
+				AFF7728619CC22DF0077115D /* MWImageTransformer.m */,
+				AFEC160A19C1C56400248BE4 /* MWImageViewController.h */,
+				AFEC160B19C1C56400248BE4 /* MWImageViewController.m */,
+				AFF7728B19CC2B490077115D /* MWItem.h */,
+				AFF7728C19CC2B490077115D /* MWItem.m */,
 				AF3829E419BF403600F2C57D /* MWItemCell.h */,
 				AF3829E519BF403600F2C57D /* MWItemCell.m */,
 				AF3829E619BF403600F2C57D /* MWItemCell.xib */,
-				AFC44FE719C73AA400ACBC6A /* nophoto.jpg */,
 				AFF99F5419A9FCA60065EAA0 /* MWItemStore.h */,
 				AFF99F5519A9FCA60065EAA0 /* MWItemStore.m */,
 				AFF99F4E19A9F9450065EAA0 /* MWItemsViewController.h */,
 				AFF99F4F19A9F9450065EAA0 /* MWItemsViewController.m */,
-				AFEC160A19C1C56400248BE4 /* MWImageViewController.h */,
-				AFEC160B19C1C56400248BE4 /* MWImageViewController.m */,
 				AF64CC0F19BDB7810056CB99 /* MWNavigationController.h */,
 				AF64CC1019BDB7810056CB99 /* MWNavigationController.m */,
-				AFF99F2619A9F7940065EAA0 /* Supporting Files */,
+				AFC44FE719C73AA400ACBC6A /* nophoto.jpg */,
 				AF32A8EF19C205DB00FB68AD /* stylesheet.cas */,
-				AFF7728B19CC2B490077115D /* MWItem.h */,
-				AFF7728C19CC2B490077115D /* MWItem.m */,
+				AFF99F2619A9F7940065EAA0 /* Supporting Files */,
 			);
 			path = Homeowner;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 				AFF99F3019A9F7940065EAA0 /* MWAppDelegate.m in Sources */,
 				AFF7728719CC22DF0077115D /* MWImageTransformer.m in Sources */,
 				AFF7728419CC20280077115D /* Homeowner.xcdatamodeld in Sources */,
+				AFF7729319CC85320077115D /* MWAssetTypeViewController.m in Sources */,
 				AF8582CD19B06E5900703302 /* MWImageStore.m in Sources */,
 				AFF99F2C19A9F7940065EAA0 /* main.m in Sources */,
 				AFF99F5619A9FCA60065EAA0 /* MWItemStore.m in Sources */,
