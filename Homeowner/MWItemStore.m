@@ -12,7 +12,7 @@
 
 @interface MWItemStore()
 @property (nonatomic) NSMutableArray *privateItems;
-@property (nonatomic, strong) NSMutableArray *allAssetTypes;
+@property (nonatomic, strong) NSMutableArray *assetTypes;
 @property (nonatomic, strong) NSManagedObjectContext *context;
 @property (nonatomic, strong) NSManagedObjectModel *model;
 @end
@@ -47,7 +47,7 @@
         
         _context = [[NSManagedObjectContext alloc] init];
         _context.persistentStoreCoordinator = psc;
-        
+        //[self clearAllItems];
         [self loadAllItems];
     }
     return self;
@@ -140,7 +140,7 @@
 }
 
 -(NSArray *)allAssetTypes {
-    if(!_allAssetTypes) {
+    if(!self.assetTypes) {
         NSFetchRequest *request = [[NSFetchRequest alloc] init];
         NSEntityDescription *e = [NSEntityDescription entityForName:@"MWAssetType" inManagedObjectContext:self.context];
         request.entity = e;
@@ -149,24 +149,40 @@
         NSArray *result = [self.context executeFetchRequest:request error:&error];
         if(!result) {
             [NSException raise:@"Fetch failed!" format:@"Reason: %@", [error localizedDescription]];
-            _allAssetTypes = [result mutableCopy];
         }
-        
-        if([_allAssetTypes count] == 0) {
-            NSManagedObject *type;
-            type = [NSEntityDescription insertNewObjectForEntityForName:@"MWAssetType" inManagedObjectContext:self.context];
-            [type setValue:@"Furniture" forKey:@"label"];
-            [_allAssetTypes addObject:type];
-        
-            type = [NSEntityDescription insertNewObjectForEntityForName:@"MWAssetType" inManagedObjectContext:self.context];
-            [type setValue:@"Jewelry" forKey:@"label"];
-            [_allAssetTypes addObject:type];
-            
-            type = [NSEntityDescription insertNewObjectForEntityForName:@"MWAssetType" inManagedObjectContext:self.context];
-            [type setValue:@"Electronics" forKey:@"label"];
-            [_allAssetTypes addObject:type];
-        }
+        self.assetTypes = [result mutableCopy];
     }
-    return _allAssetTypes;
+    
+    if([self.assetTypes count] == 0) {
+        NSManagedObject *type;
+        type = [NSEntityDescription insertNewObjectForEntityForName:@"MWAssetType" inManagedObjectContext:self.context];
+        [type setValue:@"Furniture" forKey:@"label"];
+        [self.assetTypes addObject:type];
+    
+        type = [NSEntityDescription insertNewObjectForEntityForName:@"MWAssetType" inManagedObjectContext:self.context];
+        [type setValue:@"Jewelry" forKey:@"label"];
+        [self.assetTypes addObject:type];
+        
+        type = [NSEntityDescription insertNewObjectForEntityForName:@"MWAssetType" inManagedObjectContext:self.context];
+        [type setValue:@"Electronics" forKey:@"label"];
+        [self.assetTypes addObject:type];
+    }
+    return self.assetTypes;
+}
+
+-(void) clearAllItems {
+    NSFetchRequest *data = [[NSFetchRequest alloc] init];
+    [data setEntity:[NSEntityDescription entityForName:@"MWAssetType" inManagedObjectContext:self.context]];
+    [data setIncludesPropertyValues:NO];
+    
+    NSError *error = nil;
+    NSArray *assets = [self.context executeFetchRequest:data error:&error];
+    
+    for(NSManagedObject *asset in assets) {
+        [self.context deleteObject:asset];
+    }
+    
+    NSError *saveError = nil;
+    [self.context save:&saveError];
 }
 @end

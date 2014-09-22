@@ -13,8 +13,6 @@
 
 @implementation MWAssetTypeViewController
 
-@synthesize item = _item;
-
 -(instancetype)init {
     return [super initWithStyle:UITableViewStylePlain];
 }

@@ -66,7 +66,7 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+        
     MWItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MWItemCell" forIndexPath:indexPath];
 
     NSArray *items = [[MWItemStore sharedStore] allItems];
@@ -183,4 +183,5 @@
    
     return headerSection;
 }
+
 @end
