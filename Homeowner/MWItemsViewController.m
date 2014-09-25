@@ -15,12 +15,50 @@
 #import "MWItemCell.h"
 #import "MWImageViewController.h"
 
-@interface MWItemsViewController() <UIPopoverControllerDelegate>
+@interface MWItemsViewController() <UIPopoverControllerDelegate, UIDataSourceModelAssociation>
 @property (nonatomic, strong) UIPopoverController *imagePopover;
 @end
 
 @implementation MWItemsViewController
 
++(UIViewController *)viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder {
+    return [[self alloc] init];
+}
+
+-(void)encodeRestorableStateWithCoder:(NSCoder *)coder {
+    [coder encodeBool:self.isEditing forKey:@"TableViewIsEditing"];
+    [super encodeRestorableStateWithCoder:coder];
+}
+
+-(void)decodeRestorableStateWithCoder:(NSCoder *)coder {
+    self.editing = [coder decodeBoolForKey:@"TableViewIsEditing"];
+    [super decodeRestorableStateWithCoder:coder];
+}
+
+-(NSString *)modelIdentifierForElementAtIndexPath:(NSIndexPath *)idx inView:(UIView *)view {
+    NSString *identifier = nil;
+    if(idx && view) {
+        MWItem *item = [[MWItemStore sharedStore] allItems][idx.row];
+        identifier = item.itemKey;
+    }
+    
+    return identifier;
+}
+
+-(NSIndexPath *)indexPathForElementWithModelIdentifier:(NSString *)identifier inView:(UIView *)view {
+    NSIndexPath *indexPath = nil;
+    if(identifier && view) {
+        NSArray *items = [[MWItemStore sharedStore] allItems];
+        for(MWItem *item in items) {
+            if([identifier isEqualToString:item.itemKey]) {
+                int row = [items indexOfObjectIdenticalTo:item];
+                indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+                break;
+            }
+        }
+    }
+    return indexPath;
+}
 
 -(instancetype) init {
     if(self = [super initWithStyle:UITableViewStylePlain]) {
@@ -30,8 +68,10 @@
         
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewItem:)];
         navItem.rightBarButtonItem = bbi;
-        
         navItem.leftBarButtonItem = self.editButtonItem;
+        
+        self.restorationIdentifier = NSStringFromClass([self class]);
+        self.restorationClass = [self class];
     }
     return self;
 }
@@ -44,6 +84,7 @@
     [super viewDidLoad];
     UINib *nib = [UINib nibWithNibName:@"MWItemCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"MWItemCell"];
+    self.tableView.restorationIdentifier = @"MWItemsViewControllerTableView";
 }
 
 -(NSInteger) getLastRowIndex {
@@ -135,6 +176,7 @@
     };
     
     MWNavigationController *navController = [[MWNavigationController alloc] initWithRootViewController:dvc];
+    navController.restorationIdentifier = NSStringFromClass([navController class]);
     [self presentViewController:navController animated:YES completion:nil];
 }
 
@@ -183,5 +225,4 @@
    
     return headerSection;
 }
-
 @end

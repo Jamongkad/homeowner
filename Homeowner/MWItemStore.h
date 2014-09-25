@@ -17,5 +17,6 @@
 -(void) removeItem:(MWItem *) item;
 -(void) moveItemAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex;
 -(BOOL) saveChanges;
+-(void) clearAllItems;
 -(NSArray *)allAssetTypes;
 @end

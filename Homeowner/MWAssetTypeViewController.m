@@ -7,34 +7,56 @@
 //
 
 #import "MWAssetTypeViewController.h"
+#import "MWAssetType.h"
 
 #import "MWItemStore.h"
 #import "MWItem.h"
+#import "MWAssetAdder.h"
 
 @implementation MWAssetTypeViewController
 
 -(instancetype)init {
-    return [super initWithStyle:UITableViewStylePlain];
+    if(self = [super initWithStyle:UITableViewStylePlain]) {
+        UINavigationItem *navItem = self.navigationItem;
+        
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAsset:)];
+        navItem.rightBarButtonItem = bbi;
+    }
+    
+    return self;
 }
 
 -(instancetype)initWithStyle:(UITableViewStyle)style {
     return [self init];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
 -(void)viewDidLoad {
     [super viewDidLoad];
+    [self refresh];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
 }
 
+-(void)refresh {
+    [self.dataArray removeAllObjects];
+    self.allAssets = [[MWItemStore sharedStore] allAssetTypes];
+    [self.dataArray addObjectsFromArray:self.allAssets];
+    [self.tableView reloadData];
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[MWItemStore sharedStore] allAssetTypes] count];
+    return [self.allAssets count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
-    NSArray *allAssets = [[MWItemStore sharedStore] allAssetTypes];
-    NSManagedObject *assetType = allAssets[indexPath.row];
-    
+   
+    NSManagedObject *assetType = [self.allAssets objectAtIndex:indexPath.row];
+
     NSString *assetLabel = [assetType valueForKey:@"label"];
     cell.textLabel.text = assetLabel;
     
@@ -50,11 +72,14 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    
-    NSArray *allAssets = [[MWItemStore sharedStore] allAssetTypes];
-    NSManagedObject *assetType = allAssets[indexPath.row];
+    NSManagedObject *assetType = [self.allAssets objectAtIndex:indexPath.row];
+
     self.item.assetType = assetType;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)addAsset:(id)sender {
+    MWAssetAdder *maa = [[MWAssetAdder alloc] init];
+    [self.navigationController pushViewController:maa animated:YES];
+}
 @end

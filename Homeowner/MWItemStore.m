@@ -47,7 +47,7 @@
         
         _context = [[NSManagedObjectContext alloc] init];
         _context.persistentStoreCoordinator = psc;
-        //[self clearAllItems];
+        //uncomment when you want to clear shit [self clearAllItems];
         [self loadAllItems];
     }
     return self;
@@ -185,4 +185,5 @@
     NSError *saveError = nil;
     [self.context save:&saveError];
 }
+
 @end

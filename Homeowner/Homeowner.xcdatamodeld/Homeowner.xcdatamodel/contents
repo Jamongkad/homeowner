@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="MWAssetType" syncable="YES">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="MWAssetType" representedClassName="MWAssetType" syncable="YES">
         <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MWItem" inverseName="assetType" inverseEntity="MWItem" syncable="YES"/>
     </entity>
@@ -16,7 +16,7 @@
         <relationship name="assetType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MWAssetType" inverseName="items" inverseEntity="MWAssetType" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MWItem" positionX="-63" positionY="-18" width="128" height="178"/>
         <element name="MWAssetType" positionX="-36" positionY="63" width="128" height="73"/>
+        <element name="MWItem" positionX="-63" positionY="-18" width="128" height="178"/>
     </elements>
 </model>

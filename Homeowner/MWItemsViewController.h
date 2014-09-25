@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MWItemsViewController : UITableViewController <UITableViewDelegate>
+@interface MWItemsViewController : UITableViewController <UITableViewDelegate, UIViewControllerRestoration>
 
 @end

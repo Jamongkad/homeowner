@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A8E6755474334BBD8FA309E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2551BE54E2E34D448A809D03 /* libPods.a */; };
+		AF0785C219D05CB300A78637 /* MWAssetAdder.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0785C019D05CB300A78637 /* MWAssetAdder.m */; };
+		AF0785C319D05CB300A78637 /* MWAssetAdder.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF0785C119D05CB300A78637 /* MWAssetAdder.xib */; };
+		AF0785C819D0651200A78637 /* MWAssetStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0785C719D0651200A78637 /* MWAssetStore.m */; };
+		AF0785CB19D06A0500A78637 /* MWAssetType.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0785CA19D06A0500A78637 /* MWAssetType.m */; };
 		AF32A8F019C205DB00FB68AD /* stylesheet.cas in Resources */ = {isa = PBXBuildFile; fileRef = AF32A8EF19C205DB00FB68AD /* stylesheet.cas */; };
 		AF3829E719BF403600F2C57D /* MWItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3829E519BF403600F2C57D /* MWItemCell.m */; };
 		AF3829E819BF403600F2C57D /* MWItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF3829E619BF403600F2C57D /* MWItemCell.xib */; };
@@ -52,6 +56,13 @@
 /* Begin PBXFileReference section */
 		2551BE54E2E34D448A809D03 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8280AA6F463848F99D90E846 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		AF0785BF19D05CB300A78637 /* MWAssetAdder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWAssetAdder.h; sourceTree = "<group>"; };
+		AF0785C019D05CB300A78637 /* MWAssetAdder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWAssetAdder.m; sourceTree = "<group>"; };
+		AF0785C119D05CB300A78637 /* MWAssetAdder.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MWAssetAdder.xib; sourceTree = "<group>"; };
+		AF0785C619D0651200A78637 /* MWAssetStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWAssetStore.h; sourceTree = "<group>"; };
+		AF0785C719D0651200A78637 /* MWAssetStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWAssetStore.m; sourceTree = "<group>"; };
+		AF0785C919D06A0500A78637 /* MWAssetType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWAssetType.h; sourceTree = "<group>"; };
+		AF0785CA19D06A0500A78637 /* MWAssetType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWAssetType.m; sourceTree = "<group>"; };
 		AF32A8EF19C205DB00FB68AD /* stylesheet.cas */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stylesheet.cas; sourceTree = "<group>"; };
 		AF3829E419BF403600F2C57D /* MWItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWItemCell.h; sourceTree = "<group>"; };
 		AF3829E519BF403600F2C57D /* MWItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWItemCell.m; sourceTree = "<group>"; };
@@ -162,6 +173,13 @@
 				AFF99F3119A9F7940065EAA0 /* Images.xcassets */,
 				AFF99F2E19A9F7940065EAA0 /* MWAppDelegate.h */,
 				AFF99F2F19A9F7940065EAA0 /* MWAppDelegate.m */,
+				AF0785BF19D05CB300A78637 /* MWAssetAdder.h */,
+				AF0785C019D05CB300A78637 /* MWAssetAdder.m */,
+				AF0785C119D05CB300A78637 /* MWAssetAdder.xib */,
+				AF0785C619D0651200A78637 /* MWAssetStore.h */,
+				AF0785C719D0651200A78637 /* MWAssetStore.m */,
+				AF0785C919D06A0500A78637 /* MWAssetType.h */,
+				AF0785CA19D06A0500A78637 /* MWAssetType.m */,
 				AFF7729119CC85320077115D /* MWAssetTypeViewController.h */,
 				AFF7729219CC85320077115D /* MWAssetTypeViewController.m */,
 				AF5FD1C319AE469A00E3EBF3 /* MWDateChangeViewController.h */,
@@ -306,6 +324,7 @@
 				AF5FD1C719AE469A00E3EBF3 /* MWDateChangeViewController.xib in Resources */,
 				AFF99F3219A9F7940065EAA0 /* Images.xcassets in Resources */,
 				AFC44FE819C73AA400ACBC6A /* nophoto.jpg in Resources */,
+				AF0785C319D05CB300A78637 /* MWAssetAdder.xib in Resources */,
 				AF3829E819BF403600F2C57D /* MWItemCell.xib in Resources */,
 				AF32A8F019C205DB00FB68AD /* stylesheet.cas in Resources */,
 			);
@@ -365,10 +384,13 @@
 				AFBD523019ACE5BE001E6290 /* MWDetailViewController.m in Sources */,
 				AFF99F3019A9F7940065EAA0 /* MWAppDelegate.m in Sources */,
 				AFF7728719CC22DF0077115D /* MWImageTransformer.m in Sources */,
+				AF0785CB19D06A0500A78637 /* MWAssetType.m in Sources */,
 				AFF7728419CC20280077115D /* Homeowner.xcdatamodeld in Sources */,
 				AFF7729319CC85320077115D /* MWAssetTypeViewController.m in Sources */,
 				AF8582CD19B06E5900703302 /* MWImageStore.m in Sources */,
 				AFF99F2C19A9F7940065EAA0 /* main.m in Sources */,
+				AF0785C819D0651200A78637 /* MWAssetStore.m in Sources */,
+				AF0785C219D05CB300A78637 /* MWAssetAdder.m in Sources */,
 				AFF99F5619A9FCA60065EAA0 /* MWItemStore.m in Sources */,
 				AF64CC1119BDB7810056CB99 /* MWNavigationController.m in Sources */,
 				AFF7728D19CC2B490077115D /* MWItem.m in Sources */,

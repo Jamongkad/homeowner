@@ -10,6 +10,9 @@
 
 @class MWItem;
 
-@interface MWAssetTypeViewController : UITableViewController
+@interface MWAssetTypeViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 @property (nonatomic, strong) MWItem *item;
+@property (nonatomic) NSMutableArray *dataArray;
+@property (nonatomic) NSArray *allAssets;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @end

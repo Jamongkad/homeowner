@@ -10,7 +10,7 @@
 
 @class MWItem;
 
-@interface MWDetailViewController : UIViewController <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverControllerDelegate>
+@interface MWDetailViewController : UIViewController <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverControllerDelegate, UIViewControllerRestoration>
 
 @property (nonatomic, strong) MWItem *item;
 @property (nonatomic, copy) void (^dismissBlock)(void);

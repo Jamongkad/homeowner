@@ -31,6 +31,36 @@
 
 @implementation MWDetailViewController
 
++(UIViewController *)viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder {
+
+    BOOL isNew = NO;
+    if([identifierComponents count] == 3) {
+        isNew = YES;
+    }
+    
+    return [[self alloc] initForNewItem:isNew];
+}
+
+-(void)encodeRestorableStateWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.item.itemKey forKey:@"item.itemKey"];
+    self.item.name = self.nameField.text;
+    self.item.serialNumber = self.serialField.text;
+    self.item.valueInDollars = [self.valueField.text floatValue];
+
+    [super encodeRestorableStateWithCoder:coder];
+}
+
+-(void)decodeRestorableStateWithCoder:(NSCoder *)coder {
+    NSString *itemKey = [coder decodeObjectForKey:@"item.itemKey"];
+    for(MWItem *item in [[MWItemStore sharedStore] allItems]) {
+        if([itemKey isEqualToString:item.itemKey]) {
+            self.item = item;
+            break;
+        }
+    }
+    [super decodeRestorableStateWithCoder:coder];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     @throw [NSException exceptionWithName:@"Wrong Initializer" reason:@"Use initForNewItem" userInfo:nil];
     return nil;
@@ -57,6 +87,7 @@
 
 -(instancetype)initForNewItem:(BOOL)isNew {
     if(self = [super initWithNibName:nil bundle:nil]) {
+        self.restorationClass = [self class];
         if(isNew) {
             UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self
                                                                                       action:@selector(save:)];

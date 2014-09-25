@@ -13,17 +13,23 @@
 
 @implementation MWAppDelegate
 
+-(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    return YES;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    MWItemsViewController *itemsViewController = [[MWItemsViewController alloc] init];
-    MWNavigationController *navController = [[MWNavigationController alloc] initWithRootViewController: itemsViewController];
-    
-    self.window.rootViewController = navController;
-    
+    NSLog(@"%@", self.window.rootViewController);
+    if(!self.window.rootViewController) {
+        MWItemsViewController *itemsViewController = [[MWItemsViewController alloc] init];
+        MWNavigationController *navController = [[MWNavigationController alloc] initWithRootViewController: itemsViewController];
+        navController.restorationIdentifier = NSStringFromClass([navController class]);
+        self.window.rootViewController = navController;
+    }
+   
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -57,4 +63,21 @@
     [[MWItemStore sharedStore] saveChanges];
 }
 
+-(BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder {
+    return YES;
+}
+
+-(BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder {
+    return YES;
+}
+
+-(UIViewController *)application:(UIApplication *)application viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder {
+    MWNavigationController *vc = [[MWNavigationController alloc] init];
+    vc.restorationIdentifier = [identifierComponents lastObject];
+    if([identifierComponents count] == 1) {
+        self.window.rootViewController = vc;
+    }
+    
+    return vc;
+}
 @end
